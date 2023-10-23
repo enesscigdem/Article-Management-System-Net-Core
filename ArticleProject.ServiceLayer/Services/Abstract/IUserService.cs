@@ -11,5 +11,7 @@ namespace ArticleProject.ServiceLayer.Services.Abstract
     public interface IUserService
     {
         Task<List<UserListDto>> GetAllUsersForApprove();
+        Task ConfirmUser(Guid UserId);
+        Task DeleteUser(Guid UserId);
     }
 }

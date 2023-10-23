@@ -36,8 +36,8 @@
                             <td>@user.UserName</td>
                             <td>@(user.IsActive ? "Aktif" : "Aktif Değil")</td>
                             <td>
-                                <a class="btn btn-primary btn-sm" data-id="@user.UserId" asp-area="Admin" asp-controller="User" asp-action="Update" asp-route-categoryId="@user.UserId"><i class="ti ti-plus"></i></a>
-                                <a class="btn btn-danger btn-sm" data-id="@user.UserId" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-categoryId="@user.UserId"><i class="ti ti-minus"></i></a>
+                                <a class="btn btn-primary btn-sm" data-id="@user.UserId" asp-area="Admin" asp-controller="User" asp-action="ConfirmUser" asp-route-UserId="@user.UserId"><i class="ti ti-plus"></i></a>
+                                <a class="btn btn-danger btn-sm" data-id="@user.UserId" asp-area="Admin" asp-controller="User" asp-action="DeleteUser" asp-route-UserId="@user.UserId"><i class="ti ti-minus"></i></a>
                             </td>
                         </tr>
                     }

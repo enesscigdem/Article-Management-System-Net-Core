@@ -21,6 +21,20 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
         }
+        public async Task DeleteUser(Guid UserId)
+        {
+            var user = await unitOfWork.GetRepository<User>().GetByGuidAsync(UserId);
+            
+            await unitOfWork.GetRepository<User>().DeleteAsync(user);
+            await unitOfWork.SaveAsync();
+        }
+        public async Task ConfirmUser(Guid UserId)
+        {
+            var user = await unitOfWork.GetRepository<User>().GetByGuidAsync(UserId);
+            user.IsActive = true;
+            await unitOfWork.GetRepository<User>().UpdateAsync(user);
+            await unitOfWork.SaveAsync(); 
+        }
 
         public async Task<List<UserListDto>> GetAllUsersForApprove()
         {
