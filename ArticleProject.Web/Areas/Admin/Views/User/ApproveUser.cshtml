@@ -1,0 +1,52 @@
+﻿@model List<UserListDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Kullanıcı /</span> Kullanıcı İşlemleri</h4>
+
+    <div class="card">
+        <div class="table-responsive text-nowrap m-3">
+            <table class="table table-bordered" id="userTable" width="100%" collspacing="0">
+                <thead>
+                    <tr>
+                        <th>İsim</th>
+                        <th>Soyisim</th>
+                        <th>Email</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Aktif Durumu</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>İsim</th>
+                        <th>Soyisim</th>
+                        <th>Email</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Aktif Durumu</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var user in Model)
+                    {
+                        <tr name="@user.UserId">
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.Email</td>
+                            <td>@user.UserName</td>
+                            <td>@(user.IsActive ? "Aktif" : "Aktif Değil")</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" data-id="@user.UserId" asp-area="Admin" asp-controller="User" asp-action="Update" asp-route-categoryId="@user.UserId"><i class="ti ti-plus"></i></a>
+                                <a class="btn btn-danger btn-sm" data-id="@user.UserId" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-categoryId="@user.UserId"><i class="ti ti-minus"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/userList.js" type="application/ecmascript"></script>
+}
