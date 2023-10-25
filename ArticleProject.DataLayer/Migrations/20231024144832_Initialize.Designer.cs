@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArticleProject.DataLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231022205349_Init")]
-    partial class Init
+    [Migration("20231024144832_Initialize")]
+    partial class Initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,16 +31,10 @@ namespace ArticleProject.DataLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("AuthorUserId")
+                    b.Property<Guid>("AuthorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("CategoryId1")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
@@ -54,6 +48,9 @@ namespace ArticleProject.DataLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Likes")
                         .HasColumnType("int");
 
@@ -66,11 +63,26 @@ namespace ArticleProject.DataLayer.Migrations
 
                     b.HasKey("ArticleId");
 
-                    b.HasIndex("AuthorUserId");
+                    b.HasIndex("AuthorId");
 
-                    b.HasIndex("CategoryId1");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Articles");
+
+                    b.HasData(
+                        new
+                        {
+                            ArticleId = new Guid("ccb17c3c-5742-402d-92e1-e567edbe0785"),
+                            AuthorId = new Guid("9614dd78-111c-42ec-8f02-379368493c0a"),
+                            CategoryId = new Guid("3ced153f-93fb-4415-a5e8-2f97d6ae5d73"),
+                            Content = "Lorem Ipsum, Çiçero'nun MÖ 45 yılında yazdığı \"de Finibus Bonorum et Malorum – İyi ve Kötünün Uç Sınırları\" eserindeki 1.30.32 sayılı paragrafında yer alır. Bu eser Rönesans döneminde etik teorileri üzerine bilimsel inceleme konusu haline gelmiştir. Lorem Ipsum 1500'lü yıllardan itibaren aşağıdaki formuyla standartlaşmıştır: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                            CreationDate = new DateTime(2023, 10, 24, 17, 48, 32, 781, DateTimeKind.Local).AddTicks(1333),
+                            Image = "-",
+                            IsActive = true,
+                            Likes = 20,
+                            Title = "Asp.net Core Deneme Makalesi 1",
+                            Views = 41028
+                        });
                 });
 
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Category", b =>
@@ -93,6 +105,43 @@ namespace ArticleProject.DataLayer.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = new Guid("3ced153f-93fb-4415-a5e8-2f97d6ae5d73"),
+                            CategoryName = "Magazin",
+                            Description = "Magazin Açıklaması",
+                            IsActive = false
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("5a5a380c-523a-408e-ba4e-675eb33d2514"),
+                            CategoryName = "Spor",
+                            Description = "Spor Açıklaması",
+                            IsActive = false
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("d86715ac-48eb-4d3a-9a84-635a425953a7"),
+                            CategoryName = "Gündem",
+                            Description = "Gündem Açıklaması",
+                            IsActive = false
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("931615ef-0c98-47f9-8cf7-c74a555b0125"),
+                            CategoryName = "Haber",
+                            Description = "Haber Açıklaması",
+                            IsActive = false
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("3372af9b-107b-4c9c-82e8-1f08f780f886"),
+                            CategoryName = "Teknoloji",
+                            Description = "Teknoloji Açıklaması",
+                            IsActive = false
+                        });
                 });
 
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Comment", b =>
@@ -205,19 +254,45 @@ namespace ArticleProject.DataLayer.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("594a248a-add7-45cd-84bd-6e016a227bde"),
+                            Email = "enescigdeem@gmail.com",
+                            FirstName = "Enes",
+                            IsActive = true,
+                            LastName = "Çiğdem",
+                            Password = "123456",
+                            ProfilePicture = "-",
+                            Role = "ADMIN",
+                            UserName = "enescigdeem"
+                        },
+                        new
+                        {
+                            UserId = new Guid("9614dd78-111c-42ec-8f02-379368493c0a"),
+                            Email = "busecinar@gmail.com",
+                            FirstName = "Buse",
+                            IsActive = true,
+                            LastName = "Çınar",
+                            Password = "123456",
+                            ProfilePicture = "-",
+                            Role = "USER",
+                            UserName = "busecinar"
+                        });
                 });
 
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Article", b =>
                 {
                     b.HasOne("ArticleProject.EntityLayer.Entities.User", "Author")
                         .WithMany("Articles")
-                        .HasForeignKey("AuthorUserId")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ArticleProject.EntityLayer.Entities.Category", "Category")
                         .WithMany("Articles")
-                        .HasForeignKey("CategoryId1")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

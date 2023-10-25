@@ -24,16 +24,23 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
         public async Task DeleteUser(Guid UserId)
         {
             var user = await unitOfWork.GetRepository<User>().GetByGuidAsync(UserId);
-            
+
             await unitOfWork.GetRepository<User>().DeleteAsync(user);
             await unitOfWork.SaveAsync();
         }
-        public async Task ConfirmUser(Guid UserId)
+        public async Task ActiveUser(Guid UserId)
         {
             var user = await unitOfWork.GetRepository<User>().GetByGuidAsync(UserId);
             user.IsActive = true;
             await unitOfWork.GetRepository<User>().UpdateAsync(user);
-            await unitOfWork.SaveAsync(); 
+            await unitOfWork.SaveAsync();
+        }
+        public async Task PassiveUser(Guid UserId)
+        {
+            var user = await unitOfWork.GetRepository<User>().GetByGuidAsync(UserId);
+            user.IsActive = false;
+            await unitOfWork.GetRepository<User>().UpdateAsync(user);
+            await unitOfWork.SaveAsync();
         }
 
         public async Task<List<UserListDto>> GetAllUsersForApprove()

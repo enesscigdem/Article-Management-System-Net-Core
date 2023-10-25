@@ -15,11 +15,12 @@ namespace ArticleProject.EntityLayer.Entities
         public string Image { get; set; }
         public int Views { get; set; }
         public int Likes { get; set; }
+        public bool IsActive { get; set; }
 
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         public Category Category { get; set; }
 
-        public int AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
         public User Author { get; set; }
 
         public List<Comment> Comments { get; set; }

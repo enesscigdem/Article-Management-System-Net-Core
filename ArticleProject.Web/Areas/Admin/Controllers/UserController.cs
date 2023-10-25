@@ -15,22 +15,29 @@ namespace ArticleProject.Web.Areas.Admin.Controllers
             this.userService = userService;
             this.toastNotification = toastNotification;
         }
-        public async Task<IActionResult> ApproveUser()
+        [HttpGet]
+        public async Task<IActionResult> UserList()
         {
             var result = await userService.GetAllUsersForApprove();
             return View(result);
         }
-        public async Task<IActionResult> ConfirmUser(Guid UserId)
+        public async Task<IActionResult> ActiveUser(Guid UserId)
         {
-            await userService.ConfirmUser(UserId);
+            await userService.ActiveUser(UserId);
             toastNotification.AddSuccessToastMessage("Kullanıcı Onaylanmıştır.", new ToastrOptions { Title = "İşlem Başarılı" });
-            return RedirectToAction("ApproveUser", "User");
+            return RedirectToAction("UserList", "User");
+        }
+        public async Task<IActionResult> PassiveUser(Guid UserId)
+        {
+            await userService.PassiveUser(UserId);
+            toastNotification.AddInfoToastMessage("Kullanıcı Pasife Alınmıştır.", new ToastrOptions { Title = "İşlem Başarılı" });
+            return RedirectToAction("UserList", "User");
         }
         public async Task<IActionResult> DeleteUser(Guid UserId)
         {
             await userService.DeleteUser(UserId);
             toastNotification.AddErrorToastMessage("Kullanıcı Silinmiştir.", new ToastrOptions { Title = "İşlem Başarılı" });
-            return RedirectToAction("ApproveUser", "User");
+            return RedirectToAction("UserList", "User");
         }
     }
 }

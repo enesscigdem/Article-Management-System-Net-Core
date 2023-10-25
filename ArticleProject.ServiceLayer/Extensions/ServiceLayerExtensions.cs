@@ -18,6 +18,8 @@ namespace ArticleProject.ServiceLayer.Extensions
         {
             var assembly = Assembly.GetExecutingAssembly();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IArticleService, ArticleService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
