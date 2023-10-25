@@ -14,6 +14,7 @@ namespace ArticleProject.ServiceLayer.AutoMapper.Categories
         public CategoryProfile()
         {
             CreateMap<Category, CategoryListDto>().ReverseMap();
+            CreateMap<Category, CategoryUpdateDto>().ReverseMap();
         }
     }
 }

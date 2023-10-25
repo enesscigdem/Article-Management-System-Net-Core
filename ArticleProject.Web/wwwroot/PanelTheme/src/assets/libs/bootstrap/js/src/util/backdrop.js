@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler'
+import EventHandler from '~/PanelTheme/src/dom/event-handler'
 import { execute, executeAfterTransition, getElement, reflow } from './index'
 import Config from './config'
 

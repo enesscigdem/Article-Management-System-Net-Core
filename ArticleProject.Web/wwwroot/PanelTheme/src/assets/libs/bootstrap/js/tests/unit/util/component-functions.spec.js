@@ -1,8 +1,8 @@
 /* Test helpers */
 
-import { clearFixture, createEvent, getFixture } from '../../helpers/fixture'
-import { enableDismissTrigger } from '../../../src/util/component-functions'
-import BaseComponent from '../../../src/base-component'
+import { clearFixture, createEvent, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
+import { enableDismissTrigger } from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/component-functions'
+import BaseComponent from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/base-component'
 
 class DummyClass2 extends BaseComponent {
   static get NAME() {

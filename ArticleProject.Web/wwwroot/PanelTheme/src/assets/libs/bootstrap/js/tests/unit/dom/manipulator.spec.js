@@ -1,5 +1,5 @@
-import Manipulator from '../../../src/dom/manipulator'
-import { clearFixture, getFixture } from '../../helpers/fixture'
+import Manipulator from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/dom/manipulator'
+import { clearFixture, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
 
 describe('Manipulator', () => {
   let fixtureEl

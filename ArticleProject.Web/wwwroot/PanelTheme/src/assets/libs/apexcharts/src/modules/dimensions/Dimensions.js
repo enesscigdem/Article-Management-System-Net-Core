@@ -1,4 +1,4 @@
-import YAxis from '../axes/YAxis'
+import YAxis from '~/PanelTheme/src/axes/YAxis'
 import Helpers from './Helpers'
 import DimXAxis from './XAxis'
 import DimYAxis from './YAxis'

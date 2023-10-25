@@ -4,8 +4,8 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/selector-engine'), require('../dom/manipulator'), require('./index')) :
-  typeof define === 'function' && define.amd ? define(['../dom/selector-engine', '../dom/manipulator', './index'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('~/PanelTheme/src/dom/selector-engine'), require('~/PanelTheme/src/dom/manipulator'), require('./index')) :
+  typeof define === 'function' && define.amd ? define(['~/PanelTheme/src/dom/selector-engine', '~/PanelTheme/src/dom/manipulator', './index'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Scrollbar = factory(global.SelectorEngine, global.Manipulator, global.Index));
 })(this, (function (SelectorEngine, Manipulator, index) { 'use strict';
 

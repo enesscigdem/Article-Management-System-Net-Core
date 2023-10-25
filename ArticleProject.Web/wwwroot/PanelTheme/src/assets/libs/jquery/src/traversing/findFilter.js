@@ -1,9 +1,9 @@
 define( [
-	"../core",
-	"../var/indexOf",
-	"../var/isFunction",
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/var/indexOf",
+	"~/PanelTheme/src/var/isFunction",
 	"./var/rneedsContext",
-	"../selector"
+	"~/PanelTheme/src/selector"
 ], function( jQuery, indexOf, isFunction, rneedsContext ) {
 
 "use strict";

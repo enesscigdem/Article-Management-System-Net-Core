@@ -1,7 +1,7 @@
 define( [
-	"../core",
+	"~/PanelTheme/src/core",
 
-	"../event",
+	"~/PanelTheme/src/event",
 	"./trigger"
 ], function( jQuery ) {
 

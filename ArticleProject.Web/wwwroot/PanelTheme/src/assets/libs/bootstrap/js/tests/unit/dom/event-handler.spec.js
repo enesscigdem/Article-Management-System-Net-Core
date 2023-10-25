@@ -1,6 +1,6 @@
-import EventHandler from '../../../src/dom/event-handler'
-import { clearFixture, getFixture } from '../../helpers/fixture'
-import { noop } from '../../../src/util'
+import EventHandler from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/dom/event-handler'
+import { clearFixture, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
+import { noop } from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util'
 
 describe('EventHandler', () => {
   let fixtureEl

@@ -1,7 +1,7 @@
-import BaseComponent from '../../src/base-component'
-import { clearFixture, getFixture } from '../helpers/fixture'
-import EventHandler from '../../src/dom/event-handler'
-import { noop } from '../../src/util'
+import BaseComponent from '~/PanelTheme/src/~/PanelTheme/src/src/base-component'
+import { clearFixture, getFixture } from '~/PanelTheme/src/helpers/fixture'
+import EventHandler from '~/PanelTheme/src/~/PanelTheme/src/src/dom/event-handler'
+import { noop } from '~/PanelTheme/src/~/PanelTheme/src/src/util'
 
 class DummyClass extends BaseComponent {
   constructor(element) {

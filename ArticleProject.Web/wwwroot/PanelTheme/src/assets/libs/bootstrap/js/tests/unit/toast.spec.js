@@ -1,5 +1,5 @@
-import Toast from '../../src/toast'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import Toast from '~/PanelTheme/src/~/PanelTheme/src/src/toast'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '~/PanelTheme/src/helpers/fixture'
 
 describe('Toast', () => {
   let fixtureEl

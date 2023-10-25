@@ -1,5 +1,5 @@
 define( [
-	"../Data"
+	"~/PanelTheme/src/Data"
 ], function( Data ) {
 	"use strict";
 

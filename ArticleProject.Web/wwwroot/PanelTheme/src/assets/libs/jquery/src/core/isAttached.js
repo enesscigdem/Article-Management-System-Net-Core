@@ -1,7 +1,7 @@
 define( [
-	"../core",
-	"../var/documentElement",
-	"../selector" // jQuery.contains
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/var/documentElement",
+	"~/PanelTheme/src/selector" // jQuery.contains
 ], function( jQuery, documentElement ) {
 	"use strict";
 

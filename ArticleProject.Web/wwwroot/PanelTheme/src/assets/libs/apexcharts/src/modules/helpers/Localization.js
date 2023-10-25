@@ -1,6 +1,6 @@
-import Utils from '../../utils/Utils'
+import Utils from '~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
 
-import en from '../../locales/en.json'
+import en from '~/PanelTheme/src/~/PanelTheme/src/locales/en.json'
 
 export default class Localization {
   constructor(ctx) {

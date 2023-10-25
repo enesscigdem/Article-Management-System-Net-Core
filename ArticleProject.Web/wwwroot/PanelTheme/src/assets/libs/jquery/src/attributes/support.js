@@ -1,6 +1,6 @@
 define( [
-	"../var/document",
-	"../var/support"
+	"~/PanelTheme/src/var/document",
+	"~/PanelTheme/src/var/support"
 ], function( document, support ) {
 
 "use strict";

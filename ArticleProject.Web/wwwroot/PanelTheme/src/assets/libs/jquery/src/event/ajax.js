@@ -1,6 +1,6 @@
 define( [
-	"../core",
-	"../event"
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/event"
 ], function( jQuery ) {
 
 "use strict";

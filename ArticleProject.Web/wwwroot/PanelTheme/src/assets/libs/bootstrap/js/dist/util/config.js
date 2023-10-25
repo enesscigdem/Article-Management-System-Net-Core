@@ -4,8 +4,8 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./index'), require('../dom/manipulator')) :
-  typeof define === 'function' && define.amd ? define(['./index', '../dom/manipulator'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./index'), require('~/PanelTheme/src/dom/manipulator')) :
+  typeof define === 'function' && define.amd ? define(['./index', '~/PanelTheme/src/dom/manipulator'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Config = factory(global.Index, global.Manipulator));
 })(this, (function (index, Manipulator) { 'use strict';
 

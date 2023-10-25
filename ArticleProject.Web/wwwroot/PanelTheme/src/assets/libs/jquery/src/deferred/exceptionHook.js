@@ -1,6 +1,6 @@
 define( [
-	"../core",
-	"../deferred"
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/deferred"
 ], function( jQuery ) {
 
 "use strict";

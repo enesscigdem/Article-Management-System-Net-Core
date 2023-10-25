@@ -1,6 +1,6 @@
 define( [
-	"../core",
-	"../core/isAttached",
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/core/isAttached",
 	"./var/rboxStyle",
 	"./var/rnumnonpx",
 	"./var/getStyles",

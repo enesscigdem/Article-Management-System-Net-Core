@@ -23,6 +23,29 @@ namespace ArticleProject.ServiceLayer.FluentValidations
                .MinimumLength(3)
                .MaximumLength(50)
                .WithName("Soyisim");
+
+            RuleFor(x => x.Email)
+              .NotEmpty()
+              .MinimumLength(3)
+              .MaximumLength(100)
+              .EmailAddress(FluentValidation.Validators.EmailValidationMode.AspNetCoreCompatible)
+              .WithName("Email");
+
+            RuleFor(x => x.UserName)
+               .NotEmpty()
+               .MinimumLength(3)
+               .MaximumLength(100)
+               .WithName("Kullanıcı Adı");
+
+            RuleFor(x => x.Password)
+               .NotEmpty()
+               .MinimumLength(3)
+               .MaximumLength(100)
+               .WithName("Şifre");
+
+            RuleFor(x => x.ProfilePicture)
+               .NotEmpty()
+               .WithName("Profil Fotoğrafı");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ArticleProject.EntityLayer.DTOs.Users;
+﻿using ArticleProject.EntityLayer.DTOs.Register;
+using ArticleProject.EntityLayer.DTOs.Users;
 using ArticleProject.EntityLayer.Entities;
 using AutoMapper;
 using System;
@@ -14,6 +15,7 @@ namespace ArticleProject.ServiceLayer.AutoMapper.Users
         public UserProfile()
         {
             CreateMap<User, UserListDto>().ReverseMap();
+            CreateMap<User, RegisterDto>().ReverseMap();
         }
     }
 }

@@ -1,5 +1,5 @@
-import { clearFixture, getFixture } from '../../helpers/fixture'
-import TemplateFactory from '../../../src/util/template-factory'
+import { clearFixture, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
+import TemplateFactory from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/template-factory'
 
 describe('TemplateFactory', () => {
   let fixtureEl

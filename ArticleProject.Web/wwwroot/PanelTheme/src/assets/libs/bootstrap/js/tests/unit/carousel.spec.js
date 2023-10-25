@@ -1,8 +1,8 @@
-import Carousel from '../../src/carousel'
-import EventHandler from '../../src/dom/event-handler'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
-import { isRTL, noop } from '../../src/util/index'
-import Swipe from '../../src/util/swipe'
+import Carousel from '~/PanelTheme/src/~/PanelTheme/src/src/carousel'
+import EventHandler from '~/PanelTheme/src/~/PanelTheme/src/src/dom/event-handler'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '~/PanelTheme/src/helpers/fixture'
+import { isRTL, noop } from '~/PanelTheme/src/~/PanelTheme/src/src/util/index'
+import Swipe from '~/PanelTheme/src/~/PanelTheme/src/src/util/swipe'
 
 describe('Carousel', () => {
   const { Simulator, PointerEvent } = window

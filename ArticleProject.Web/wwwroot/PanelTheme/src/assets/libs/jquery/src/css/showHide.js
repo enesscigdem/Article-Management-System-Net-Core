@@ -1,7 +1,7 @@
 define( [
-	"../core",
-	"../data/var/dataPriv",
-	"../css/var/isHiddenWithinTree"
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/data/var/dataPriv",
+	"~/PanelTheme/src/css/var/isHiddenWithinTree"
 ], function( jQuery, dataPriv, isHiddenWithinTree ) {
 
 "use strict";

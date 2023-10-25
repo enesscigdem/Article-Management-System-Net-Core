@@ -1,5 +1,5 @@
-import Graphics from '../Graphics'
-import Utils from '../../utils/Utils'
+import Graphics from '~/PanelTheme/src/Graphics'
+import Utils from '~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
 
 export default class Helpers {
   constructor(lgCtx) {

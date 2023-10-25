@@ -1,4 +1,4 @@
-import Utils from '../utils/Utils'
+import Utils from '~/PanelTheme/src/utils/Utils'
 
 /**
  * ApexCharts Animation Class.

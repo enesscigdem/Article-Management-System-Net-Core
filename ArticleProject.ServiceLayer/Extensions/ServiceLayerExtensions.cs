@@ -1,4 +1,5 @@
-﻿using ArticleProject.ServiceLayer.Services.Abstract;
+﻿using ArticleProject.ServiceLayer.FluentValidations;
+using ArticleProject.ServiceLayer.Services.Abstract;
 using ArticleProject.ServiceLayer.Services.Concrete;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http;
@@ -28,7 +29,7 @@ namespace ArticleProject.ServiceLayer.Extensions
 
             services.AddControllersWithViews().AddFluentValidation(opt =>
             {
-                //opt.RegisterValidatorsFromAssemblyContaining<ArticleValidator>();
+                opt.RegisterValidatorsFromAssemblyContaining<CategoryValidator>();
                 opt.DisableDataAnnotationsValidation = true;
                 opt.ValidatorOptions.LanguageManager.Culture = new System.Globalization.CultureInfo("tr");
             });

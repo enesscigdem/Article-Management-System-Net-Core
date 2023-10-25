@@ -1,12 +1,12 @@
 define( [
-	"../core",
-	"../core/stripAndCollapse",
-	"../var/isFunction",
-	"../core/parseHTML",
-	"../ajax",
-	"../traversing",
-	"../manipulation",
-	"../selector"
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/core/stripAndCollapse",
+	"~/PanelTheme/src/var/isFunction",
+	"~/PanelTheme/src/core/parseHTML",
+	"~/PanelTheme/src/ajax",
+	"~/PanelTheme/src/traversing",
+	"~/PanelTheme/src/manipulation",
+	"~/PanelTheme/src/selector"
 ], function( jQuery, stripAndCollapse, isFunction ) {
 
 "use strict";

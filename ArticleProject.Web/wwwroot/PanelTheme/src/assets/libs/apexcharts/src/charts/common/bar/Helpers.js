@@ -1,6 +1,6 @@
-import Fill from '../../../modules/Fill'
-import Graphics from '../../../modules/Graphics'
-import Series from '../../../modules/Series'
+import Fill from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/modules/Fill'
+import Graphics from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/modules/Graphics'
+import Series from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/modules/Series'
 
 export default class Helpers {
   constructor(barCtx) {

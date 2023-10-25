@@ -1,5 +1,5 @@
 define( [
-	"../data/var/dataPriv"
+	"~/PanelTheme/src/data/var/dataPriv"
 ], function( dataPriv ) {
 
 "use strict";

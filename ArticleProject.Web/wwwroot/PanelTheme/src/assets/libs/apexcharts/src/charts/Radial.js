@@ -1,8 +1,8 @@
 import Pie from './Pie'
-import Utils from '../utils/Utils'
-import Fill from '../modules/Fill'
-import Graphics from '../modules/Graphics'
-import Filters from '../modules/Filters'
+import Utils from '~/PanelTheme/src/utils/Utils'
+import Fill from '~/PanelTheme/src/modules/Fill'
+import Graphics from '~/PanelTheme/src/modules/Graphics'
+import Filters from '~/PanelTheme/src/modules/Filters'
 
 /**
  * ApexCharts Radial Class for drawing Circle / Semi Circle Charts.

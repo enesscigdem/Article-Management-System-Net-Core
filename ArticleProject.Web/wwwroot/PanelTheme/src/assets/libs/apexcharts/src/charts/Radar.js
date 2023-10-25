@@ -1,11 +1,11 @@
-import Fill from '../modules/Fill'
-import Graphics from '../modules/Graphics'
-import Markers from '../modules/Markers'
-import DataLabels from '../modules/DataLabels'
-import Filters from '../modules/Filters'
-import Utils from '../utils/Utils'
+import Fill from '~/PanelTheme/src/modules/Fill'
+import Graphics from '~/PanelTheme/src/modules/Graphics'
+import Markers from '~/PanelTheme/src/modules/Markers'
+import DataLabels from '~/PanelTheme/src/modules/DataLabels'
+import Filters from '~/PanelTheme/src/modules/Filters'
+import Utils from '~/PanelTheme/src/utils/Utils'
 import Helpers from './common/circle/Helpers'
-import CoreUtils from '../modules/CoreUtils'
+import CoreUtils from '~/PanelTheme/src/modules/CoreUtils'
 
 /**
  * ApexCharts Radar Class for Spider/Radar Charts.

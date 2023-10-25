@@ -1,8 +1,8 @@
 define( [
-	"../core",
-	"../var/document",
-	"../core/readyException",
-	"../deferred"
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/var/document",
+	"~/PanelTheme/src/core/readyException",
+	"~/PanelTheme/src/deferred"
 ], function( jQuery, document ) {
 
 "use strict";

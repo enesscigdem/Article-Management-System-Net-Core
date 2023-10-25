@@ -1,7 +1,7 @@
-import Data from '../modules/Data'
-import AxesUtils from '../modules/axes/AxesUtils'
-import Series from '../modules/Series'
-import Utils from '../utils/Utils'
+import Data from '~/PanelTheme/src/modules/Data'
+import AxesUtils from '~/PanelTheme/src/modules/axes/AxesUtils'
+import Series from '~/PanelTheme/src/modules/Series'
+import Utils from '~/PanelTheme/src/utils/Utils'
 
 class Exports {
   constructor(ctx) {

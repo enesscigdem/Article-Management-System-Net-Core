@@ -1,4 +1,4 @@
-import { DefaultAllowlist, sanitizeHtml } from '../../../src/util/sanitizer'
+import { DefaultAllowlist, sanitizeHtml } from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/sanitizer'
 
 describe('Sanitizer', () => {
   describe('sanitizeHtml', () => {

@@ -1,4 +1,4 @@
-define( [ "../var/document" ], function( document ) {
+define( [ "~/PanelTheme/src/var/document" ], function( document ) {
 
 "use strict";
 

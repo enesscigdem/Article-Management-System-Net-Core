@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler'
-import SelectorEngine from '../dom/selector-engine'
+import EventHandler from '~/PanelTheme/src/dom/event-handler'
+import SelectorEngine from '~/PanelTheme/src/dom/selector-engine'
 import Config from './config'
 
 /**

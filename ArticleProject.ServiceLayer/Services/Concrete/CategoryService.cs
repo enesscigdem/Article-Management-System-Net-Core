@@ -51,5 +51,20 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
 
             return map;
         }
+        public async Task<Category> GetCategoryByGuid(Guid id)
+        {
+            var category = await unitOfWork.GetRepository<Category>().GetByGuidAsync(id);
+            return category;
+        }
+        public async Task<string> UpdateCategoryAsync(CategoryUpdateDto categoryListDto)
+        {
+            var category = await unitOfWork.GetRepository<Category>().GetAsync(x=>x.CategoryId == categoryListDto.CategoryId);
+            category.CategoryName = categoryListDto.CategoryName;
+
+            await unitOfWork.GetRepository<Category>().UpdateAsync(category);
+            await unitOfWork.SaveAsync();
+
+            return category.CategoryName;
+        }
     }
 }

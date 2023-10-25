@@ -1,7 +1,7 @@
 define( [
-	"../core",
-	"../var/support",
-	"../ajax"
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/var/support",
+	"~/PanelTheme/src/ajax"
 ], function( jQuery, support ) {
 
 "use strict";

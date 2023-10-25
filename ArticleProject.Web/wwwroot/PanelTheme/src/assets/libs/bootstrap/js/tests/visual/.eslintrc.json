@@ -2,7 +2,7 @@
   "plugins": [
     "html"
   ],
-  "extends": "../../../.eslintrc.json",
+  "extends": "~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/.eslintrc.json",
   "parserOptions": {
     "sourceType": "module"
   },

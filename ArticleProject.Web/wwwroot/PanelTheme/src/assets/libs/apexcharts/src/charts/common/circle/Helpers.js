@@ -1,4 +1,4 @@
-import Graphics from '../../../modules/Graphics'
+import Graphics from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/modules/Graphics'
 
 export default class CircularChartsHelpers {
   constructor(ctx) {

@@ -1,5 +1,5 @@
-import Utils from '../../utils/Utils'
-import RangeBar from '../../charts/RangeBar'
+import Utils from '~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
+import RangeBar from '~/PanelTheme/src/~/PanelTheme/src/charts/RangeBar'
 
 /**
  * ApexCharts Default Class for setting default options for all chart types.

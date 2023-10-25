@@ -1,6 +1,6 @@
-import Graphics from '../Graphics'
-import Utils from '../../utils/Utils'
-import AxesUtils from '../axes/AxesUtils'
+import Graphics from '~/PanelTheme/src/Graphics'
+import Utils from '~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
+import AxesUtils from '~/PanelTheme/src/axes/AxesUtils'
 
 export default class DimYAxis {
   constructor(dCtx) {

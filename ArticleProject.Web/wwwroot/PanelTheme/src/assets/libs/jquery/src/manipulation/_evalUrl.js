@@ -1,5 +1,5 @@
 define( [
-	"../ajax"
+	"~/PanelTheme/src/ajax"
 ], function( jQuery ) {
 
 "use strict";

@@ -51,7 +51,7 @@ const detectBrowsers = {
 }
 
 const config = {
-  basePath: '../..',
+  basePath: '~/PanelTheme/src/..',
   port: 9876,
   colors: true,
   autoWatch: false,
@@ -139,7 +139,7 @@ if (BROWSERSTACK) {
   reporters.push('coverage-istanbul')
   config.detectBrowsers = detectBrowsers
   config.coverageIstanbulReporter = {
-    dir: path.resolve(__dirname, '../coverage/'),
+    dir: path.resolve(__dirname, '~/PanelTheme/src/coverage/'),
     reports: ['lcov', 'text-summary'],
     thresholds: {
       emitWarning: false,

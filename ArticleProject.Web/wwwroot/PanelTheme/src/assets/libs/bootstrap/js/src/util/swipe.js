@@ -6,7 +6,7 @@
  */
 
 import Config from './config'
-import EventHandler from '../dom/event-handler'
+import EventHandler from '~/PanelTheme/src/dom/event-handler'
 import { execute } from './index'
 
 /**

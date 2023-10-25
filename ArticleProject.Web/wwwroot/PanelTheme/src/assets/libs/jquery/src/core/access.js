@@ -1,7 +1,7 @@
 define( [
-	"../core",
-	"../core/toType",
-	"../var/isFunction"
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/core/toType",
+	"~/PanelTheme/src/var/isFunction"
 ], function( jQuery, toType, isFunction ) {
 
 "use strict";

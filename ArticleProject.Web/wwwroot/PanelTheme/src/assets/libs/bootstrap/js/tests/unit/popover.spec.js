@@ -1,6 +1,6 @@
-import Popover from '../../src/popover'
-import EventHandler from '../../src/dom/event-handler'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
+import Popover from '~/PanelTheme/src/~/PanelTheme/src/src/popover'
+import EventHandler from '~/PanelTheme/src/~/PanelTheme/src/src/dom/event-handler'
+import { clearFixture, getFixture, jQueryMock } from '~/PanelTheme/src/helpers/fixture'
 
 describe('Popover', () => {
   let fixtureEl

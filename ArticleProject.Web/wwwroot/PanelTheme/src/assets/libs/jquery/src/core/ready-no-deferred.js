@@ -1,7 +1,7 @@
 define( [
-	"../core",
-	"../var/document",
-	"../var/isFunction"
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/var/document",
+	"~/PanelTheme/src/var/isFunction"
 ], function( jQuery, document, isFunction ) {
 
 "use strict";

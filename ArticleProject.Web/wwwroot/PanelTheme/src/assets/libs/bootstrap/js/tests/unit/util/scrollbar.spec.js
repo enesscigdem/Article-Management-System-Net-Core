@@ -1,6 +1,6 @@
-import { clearBodyAndDocument, clearFixture, getFixture } from '../../helpers/fixture'
-import Manipulator from '../../../src/dom/manipulator'
-import ScrollBarHelper from '../../../src/util/scrollbar'
+import { clearBodyAndDocument, clearFixture, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
+import Manipulator from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/dom/manipulator'
+import ScrollBarHelper from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/scrollbar'
 
 describe('ScrollBar', () => {
   let fixtureEl

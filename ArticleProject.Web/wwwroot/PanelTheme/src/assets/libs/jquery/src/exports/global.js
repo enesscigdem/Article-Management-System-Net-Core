@@ -1,5 +1,5 @@
 define( [
-	"../core"
+	"~/PanelTheme/src/core"
 ], function( jQuery, noGlobal ) {
 
 "use strict";

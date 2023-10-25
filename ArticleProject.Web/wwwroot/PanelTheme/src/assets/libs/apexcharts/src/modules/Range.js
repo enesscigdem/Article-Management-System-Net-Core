@@ -1,5 +1,5 @@
-import Utils from '../utils/Utils'
-import DateTime from '../utils/DateTime'
+import Utils from '~/PanelTheme/src/utils/Utils'
+import DateTime from '~/PanelTheme/src/utils/DateTime'
 import Scales from './Scales'
 
 /**

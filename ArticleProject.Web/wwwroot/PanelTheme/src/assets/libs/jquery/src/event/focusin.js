@@ -1,9 +1,9 @@
 define( [
-	"../core",
-	"../data/var/dataPriv",
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/data/var/dataPriv",
 	"./support",
 
-	"../event",
+	"~/PanelTheme/src/event",
 	"./trigger"
 ], function( jQuery, dataPriv, support ) {
 

@@ -69,11 +69,11 @@ namespace ArticleProject.DataLayer.Migrations
                     b.HasData(
                         new
                         {
-                            ArticleId = new Guid("ccb17c3c-5742-402d-92e1-e567edbe0785"),
+                            ArticleId = new Guid("ccf34879-6916-45aa-94d5-a3aacc8ca804"),
                             AuthorId = new Guid("9614dd78-111c-42ec-8f02-379368493c0a"),
                             CategoryId = new Guid("3ced153f-93fb-4415-a5e8-2f97d6ae5d73"),
                             Content = "Lorem Ipsum, Çiçero'nun MÖ 45 yılında yazdığı \"de Finibus Bonorum et Malorum – İyi ve Kötünün Uç Sınırları\" eserindeki 1.30.32 sayılı paragrafında yer alır. Bu eser Rönesans döneminde etik teorileri üzerine bilimsel inceleme konusu haline gelmiştir. Lorem Ipsum 1500'lü yıllardan itibaren aşağıdaki formuyla standartlaşmıştır: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            CreationDate = new DateTime(2023, 10, 24, 17, 48, 32, 781, DateTimeKind.Local).AddTicks(1333),
+                            CreationDate = new DateTime(2023, 10, 25, 17, 38, 33, 229, DateTimeKind.Local).AddTicks(5032),
                             Image = "-",
                             IsActive = true,
                             Likes = 20,
@@ -113,28 +113,28 @@ namespace ArticleProject.DataLayer.Migrations
                         },
                         new
                         {
-                            CategoryId = new Guid("5a5a380c-523a-408e-ba4e-675eb33d2514"),
+                            CategoryId = new Guid("d71ec03f-40e9-46f2-8fe3-5b0f1b093157"),
                             CategoryName = "Spor",
                             Description = "Spor Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("d86715ac-48eb-4d3a-9a84-635a425953a7"),
+                            CategoryId = new Guid("6715daba-e712-4766-aba9-9eb8d99156de"),
                             CategoryName = "Gündem",
                             Description = "Gündem Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("931615ef-0c98-47f9-8cf7-c74a555b0125"),
+                            CategoryId = new Guid("8994e51b-494b-4922-8eed-7cadb43bd6a7"),
                             CategoryName = "Haber",
                             Description = "Haber Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("3372af9b-107b-4c9c-82e8-1f08f780f886"),
+                            CategoryId = new Guid("724fe252-3b4e-404c-ac14-e70f70233eb9"),
                             CategoryName = "Teknoloji",
                             Description = "Teknoloji Açıklaması",
                             IsActive = false
@@ -255,7 +255,7 @@ namespace ArticleProject.DataLayer.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("594a248a-add7-45cd-84bd-6e016a227bde"),
+                            UserId = new Guid("baaa355f-6d4a-4e69-a6a1-f23ea5e90485"),
                             Email = "enescigdeem@gmail.com",
                             FirstName = "Enes",
                             IsActive = true,

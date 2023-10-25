@@ -1,7 +1,7 @@
 define( [
-	"../core",
-	"../queue",
-	"../effects" // Delay is optional because of this dependency
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/queue",
+	"~/PanelTheme/src/effects" // Delay is optional because of this dependency
 ], function( jQuery ) {
 
 "use strict";

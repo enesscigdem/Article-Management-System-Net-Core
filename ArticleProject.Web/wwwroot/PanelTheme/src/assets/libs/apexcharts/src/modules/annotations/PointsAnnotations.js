@@ -1,4 +1,4 @@
-import Utils from '../../utils/Utils'
+import Utils from '~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
 import Helpers from './Helpers'
 
 export default class PointAnnotations {

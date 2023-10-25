@@ -1,11 +1,11 @@
 // Initialize a jQuery object
 define( [
-	"../core",
-	"../var/document",
-	"../var/isFunction",
+	"~/PanelTheme/src/core",
+	"~/PanelTheme/src/var/document",
+	"~/PanelTheme/src/var/isFunction",
 	"./var/rsingleTag",
 
-	"../traversing/findFilter"
+	"~/PanelTheme/src/traversing/findFilter"
 ], function( jQuery, document, isFunction, rsingleTag ) {
 
 "use strict";

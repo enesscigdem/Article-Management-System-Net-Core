@@ -1,18 +1,18 @@
 /* eslint-env jquery */
 
-import Alert from '../../src/alert'
-import Button from '../../src/button'
-import Carousel from '../../src/carousel'
-import Collapse from '../../src/collapse'
-import Dropdown from '../../src/dropdown'
-import Modal from '../../src/modal'
-import Offcanvas from '../../src/offcanvas'
-import Popover from '../../src/popover'
-import ScrollSpy from '../../src/scrollspy'
-import Tab from '../../src/tab'
-import Toast from '../../src/toast'
-import Tooltip from '../../src/tooltip'
-import { clearFixture, getFixture } from '../helpers/fixture'
+import Alert from '~/PanelTheme/src/~/PanelTheme/src/src/alert'
+import Button from '~/PanelTheme/src/~/PanelTheme/src/src/button'
+import Carousel from '~/PanelTheme/src/~/PanelTheme/src/src/carousel'
+import Collapse from '~/PanelTheme/src/~/PanelTheme/src/src/collapse'
+import Dropdown from '~/PanelTheme/src/~/PanelTheme/src/src/dropdown'
+import Modal from '~/PanelTheme/src/~/PanelTheme/src/src/modal'
+import Offcanvas from '~/PanelTheme/src/~/PanelTheme/src/src/offcanvas'
+import Popover from '~/PanelTheme/src/~/PanelTheme/src/src/popover'
+import ScrollSpy from '~/PanelTheme/src/~/PanelTheme/src/src/scrollspy'
+import Tab from '~/PanelTheme/src/~/PanelTheme/src/src/tab'
+import Toast from '~/PanelTheme/src/~/PanelTheme/src/src/toast'
+import Tooltip from '~/PanelTheme/src/~/PanelTheme/src/src/tooltip'
+import { clearFixture, getFixture } from '~/PanelTheme/src/helpers/fixture'
 
 describe('jQuery', () => {
   let fixtureEl

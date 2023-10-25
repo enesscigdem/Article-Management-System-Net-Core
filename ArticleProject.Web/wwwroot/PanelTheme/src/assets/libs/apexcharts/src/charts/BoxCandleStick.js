@@ -1,8 +1,8 @@
-import CoreUtils from '../modules/CoreUtils'
+import CoreUtils from '~/PanelTheme/src/modules/CoreUtils'
 import Bar from './Bar'
-import Fill from '../modules/Fill'
-import Graphics from '../modules/Graphics'
-import Utils from '../utils/Utils'
+import Fill from '~/PanelTheme/src/modules/Fill'
+import Graphics from '~/PanelTheme/src/modules/Graphics'
+import Utils from '~/PanelTheme/src/utils/Utils'
 
 /**
  * ApexCharts BoxCandleStick Class responsible for drawing both Stacked Columns and Bars.

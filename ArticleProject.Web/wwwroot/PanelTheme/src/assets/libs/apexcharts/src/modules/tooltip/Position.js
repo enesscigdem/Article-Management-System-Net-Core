@@ -1,5 +1,5 @@
-import Graphics from '../Graphics'
-import Series from '../Series'
+import Graphics from '~/PanelTheme/src/Graphics'
+import Series from '~/PanelTheme/src/Series'
 
 /**
  * ApexCharts Tooltip.Position Class to move the tooltip based on x and y position.

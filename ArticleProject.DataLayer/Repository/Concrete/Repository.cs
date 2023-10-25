@@ -44,7 +44,7 @@ namespace ArticleProject.DataLayer.Repository.Concrete
                 foreach (var item in includeProperties)
                     query = query.Include(item);
 
-            return await query.SingleAsync();
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<T> GetByGuidAsync(Guid id)

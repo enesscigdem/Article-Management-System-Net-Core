@@ -1,4 +1,4 @@
-import Graphics from '../Graphics'
+import Graphics from '~/PanelTheme/src/Graphics'
 import AxesUtils from './AxesUtils'
 
 /**
