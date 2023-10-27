@@ -1,11 +1,11 @@
-import '~/PanelTheme/src/libs/Treemap-squared'
-import Graphics from '~/PanelTheme/src/modules/Graphics'
-import Animations from '~/PanelTheme/src/modules/Animations'
-import Fill from '~/PanelTheme/src/modules/Fill'
+import '../libs/Treemap-squared'
+import Graphics from '../modules/Graphics'
+import Animations from '../modules/Animations'
+import Fill from '../modules/Fill'
 import Helpers from './common/treemap/Helpers'
-import Filters from '~/PanelTheme/src/modules/Filters'
+import Filters from '../modules/Filters'
 
-import Utils from '~/PanelTheme/src/utils/Utils'
+import Utils from '../utils/Utils'
 
 /**
  * ApexCharts TreemapChart Class.

@@ -1,5 +1,5 @@
-import Tooltip from '~/PanelTheme/src/~/PanelTheme/src/dist/tooltip'
-import '~/PanelTheme/src/~/PanelTheme/src/dist/carousel'
+import Tooltip from '../../dist/tooltip'
+import '../../dist/carousel'
 
 window.addEventListener('load', () => {
   [].concat(...document.querySelectorAll('[data-bs-toggle="tooltip"]'))

@@ -1,8 +1,8 @@
-import Animations from '~/PanelTheme/src/modules/Animations'
-import Fill from '~/PanelTheme/src/modules/Fill'
-import Filters from '~/PanelTheme/src/modules/Filters'
-import Graphics from '~/PanelTheme/src/modules/Graphics'
-import Markers from '~/PanelTheme/src/modules/Markers'
+import Animations from '../modules/Animations'
+import Fill from '../modules/Fill'
+import Filters from '../modules/Filters'
+import Graphics from '../modules/Graphics'
+import Markers from '../modules/Markers'
 
 /**
  * ApexCharts Scatter Class.

@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { getjQuery } from '~/PanelTheme/src/util/index'
+import { getjQuery } from '../util/index'
 
 /**
  * Constants

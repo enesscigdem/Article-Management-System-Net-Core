@@ -3,6 +3,7 @@ using ArticleProject.ServiceLayer.Services.Abstract;
 using ArticleProject.ServiceLayer.Services.Concrete;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

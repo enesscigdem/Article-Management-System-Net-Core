@@ -8,14 +8,14 @@ namespace ArticleProject.EntityLayer.Entities
 {
     public class Article
     {
-        public Guid ArticleId { get; set; }
+        public Guid ArticleId { get; set; } = Guid.NewGuid();
         public string Title { get; set; }
         public string Content { get; set; }
-        public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; } = DateTime.Now;
         public string Image { get; set; }
-        public int Views { get; set; }
-        public int Likes { get; set; }
-        public bool IsActive { get; set; }
+        public int Views { get; set; } = 0;
+        public int Likes { get; set; }= 0;
+        public bool IsActive { get; set; } = true;
 
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }

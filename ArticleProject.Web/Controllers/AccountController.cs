@@ -6,7 +6,9 @@ using ArticleProject.ServiceLayer.Services.Concrete;
 using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ArticleProject.Web.Controllers
 {
@@ -32,13 +34,28 @@ namespace ArticleProject.Web.Controllers
         public async Task<IActionResult> Login(UserLoginDto userLoginDto)
         {
             if (await _userService.LoginAsync(userLoginDto.Email, userLoginDto.Password))
-                return RedirectToAction("UserList", "User", new { area = "Admin" });
+            {
+                var user = await _userService.GetUserByEmail(userLoginDto.Email);
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                    new Claim(ClaimTypes.Name, user.UserName),
+                };
+
+                var identity = new ClaimsIdentity(claims, "login");
+                var principal = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync("ArticleProject", principal); // CookieAuthentication burada tanımladığınız isim olmalı
+
+                return RedirectToAction("ArticleList", "Article", new { area = "User" });
+            }
             else
             {
                 ModelState.AddModelError(string.Empty, "Geçersiz e-posta veya şifre.");
                 return View();
             }
         }
+
         [HttpGet]
         public IActionResult Register()
         {

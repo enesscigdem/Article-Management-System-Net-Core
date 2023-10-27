@@ -1,5 +1,5 @@
-import CoreUtils from '~/PanelTheme/src/CoreUtils'
-import Graphics from '~/PanelTheme/src/Graphics'
+import CoreUtils from '../CoreUtils'
+import Graphics from '../Graphics'
 import XAxis from './XAxis'
 import AxesUtils from './AxesUtils'
 

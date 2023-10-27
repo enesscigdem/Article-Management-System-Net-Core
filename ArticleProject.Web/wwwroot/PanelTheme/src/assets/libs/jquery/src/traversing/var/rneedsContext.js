@@ -1,6 +1,6 @@
 define( [
-	"~/PanelTheme/src/~/PanelTheme/src/core",
-	"~/PanelTheme/src/~/PanelTheme/src/selector"
+	"../../core",
+	"../../selector"
 ], function( jQuery ) {
 	"use strict";
 

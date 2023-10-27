@@ -1,6 +1,6 @@
-import Alert from '~/PanelTheme/src/~/PanelTheme/src/src/alert'
-import { getTransitionDurationFromElement } from '~/PanelTheme/src/~/PanelTheme/src/src/util/index'
-import { clearFixture, getFixture, jQueryMock } from '~/PanelTheme/src/helpers/fixture'
+import Alert from '../../src/alert'
+import { getTransitionDurationFromElement } from '../../src/util/index'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Alert', () => {
   let fixtureEl

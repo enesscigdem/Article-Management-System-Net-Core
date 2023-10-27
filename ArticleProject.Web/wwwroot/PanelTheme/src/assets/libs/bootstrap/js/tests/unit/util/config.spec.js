@@ -1,5 +1,5 @@
-import Config from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/config'
-import { clearFixture, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
+import Config from '../../../src/util/config'
+import { clearFixture, getFixture } from '../../helpers/fixture'
 
 class DummyConfigClass extends Config {
   static get NAME() {

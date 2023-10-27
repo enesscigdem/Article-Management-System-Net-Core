@@ -1,6 +1,6 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/var/rcssNum"
+	"../core",
+	"../var/rcssNum"
 ], function( jQuery, rcssNum ) {
 
 "use strict";

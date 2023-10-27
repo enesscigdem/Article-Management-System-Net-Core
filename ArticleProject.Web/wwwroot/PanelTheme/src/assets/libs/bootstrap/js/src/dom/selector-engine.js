@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { isDisabled, isVisible } from '~/PanelTheme/src/util/index'
+import { isDisabled, isVisible } from '../util/index'
 
 /**
  * Constants

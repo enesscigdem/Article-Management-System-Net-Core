@@ -1,6 +1,6 @@
 {
   "extends": [
-    "~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/.eslintrc.json"
+    "../../../.eslintrc.json"
   ],
   "env": {
     "jasmine": true

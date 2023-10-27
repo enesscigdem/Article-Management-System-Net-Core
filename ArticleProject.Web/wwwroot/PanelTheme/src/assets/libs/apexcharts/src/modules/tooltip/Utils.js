@@ -1,4 +1,4 @@
-import Utilities from '~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
+import Utilities from '../../utils/Utils'
 
 /**
  * ApexCharts Tooltip.Utils Class to support Tooltip functionality.

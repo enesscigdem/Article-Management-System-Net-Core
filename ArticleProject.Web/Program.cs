@@ -20,7 +20,7 @@ builder.Services.AddControllersWithViews()
 builder.Services.ConfigureApplicationCookie(config =>
 {
     //örneðin kullanýcý giriþ yapmadý ama admin/.. path'ini biliyor. bu durumda kullanýcýyý belirlemiþ olduðumuz bu path'e yönlendireceðiz.
-    config.LoginPath = new PathString("/Admin/Auth/Login");
+    config.LoginPath = new PathString("/Account/Login");
     config.LogoutPath = new PathString("/Admin/Auth/Logout");
     config.Cookie = new CookieBuilder
     {
@@ -34,6 +34,13 @@ builder.Services.ConfigureApplicationCookie(config =>
     config.AccessDeniedPath = new PathString("/Admin/Auth/AccessDenied"); // Yetkisiz bir giriþ olduðunda burasý çalýþacak.
 });
 
+builder.Services.AddAuthentication("ArticleProject") // "ArticleProject" kimlik doðrulama düzenlemesinin adýdýr.
+        .AddCookie("ArticleProject", config =>
+        {
+            config.LoginPath = "/Account/Login"; // Giriþ yapýlacak sayfanýn yolu
+            config.LogoutPath = "/Account/Logout"; // Çýkýþ yapýlacak sayfanýn yolu
+            // Diðer yapýlandýrma seçenekleri
+        });
 
 var app = builder.Build();
 

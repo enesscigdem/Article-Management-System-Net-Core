@@ -1,9 +1,9 @@
 import BarDataLabels from './common/bar/DataLabels'
 import BarHelpers from './common/bar/Helpers'
-import CoreUtils from '~/PanelTheme/src/modules/CoreUtils'
-import Utils from '~/PanelTheme/src/utils/Utils'
-import Filters from '~/PanelTheme/src/modules/Filters'
-import Graphics from '~/PanelTheme/src/modules/Graphics'
+import CoreUtils from '../modules/CoreUtils'
+import Utils from '../utils/Utils'
+import Filters from '../modules/Filters'
+import Graphics from '../modules/Graphics'
 
 /**
  * ApexCharts Bar Class responsible for drawing both Columns and Bars.

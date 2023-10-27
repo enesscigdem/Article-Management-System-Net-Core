@@ -1,4 +1,4 @@
-import AxesUtils from '~/PanelTheme/src/axes/AxesUtils'
+import AxesUtils from '../axes/AxesUtils'
 
 export default class DimGrid {
   constructor(dCtx) {

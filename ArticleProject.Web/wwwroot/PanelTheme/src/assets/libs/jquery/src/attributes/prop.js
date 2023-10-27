@@ -1,8 +1,8 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/core/access",
+	"../core",
+	"../core/access",
 	"./support",
-	"~/PanelTheme/src/selector"
+	"../selector"
 ], function( jQuery, access, support ) {
 
 "use strict";

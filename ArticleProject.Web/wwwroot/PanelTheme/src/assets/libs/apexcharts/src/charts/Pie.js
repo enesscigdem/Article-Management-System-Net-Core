@@ -1,9 +1,9 @@
-import Animations from '~/PanelTheme/src/modules/Animations'
-import Fill from '~/PanelTheme/src/modules/Fill'
-import Utils from '~/PanelTheme/src/utils/Utils'
-import Graphics from '~/PanelTheme/src/modules/Graphics'
-import Filters from '~/PanelTheme/src/modules/Filters'
-import Scales from '~/PanelTheme/src/modules/Scales'
+import Animations from '../modules/Animations'
+import Fill from '../modules/Fill'
+import Utils from '../utils/Utils'
+import Graphics from '../modules/Graphics'
+import Filters from '../modules/Filters'
+import Scales from '../modules/Scales'
 import Helpers from './common/circle/Helpers'
 /**
  * ApexCharts Pie Class for drawing Pie / Donut Charts.

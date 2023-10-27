@@ -1,7 +1,7 @@
-import Formatters from '~/PanelTheme/src/Formatters'
-import Graphics from '~/PanelTheme/src/Graphics'
-import CoreUtils from '~/PanelTheme/src/CoreUtils'
-import DateTime from '~/PanelTheme/src/~/PanelTheme/src/utils/DateTime'
+import Formatters from '../Formatters'
+import Graphics from '../Graphics'
+import CoreUtils from '../CoreUtils'
+import DateTime from '../../utils/DateTime'
 
 export default class AxesUtils {
   constructor(ctx) {

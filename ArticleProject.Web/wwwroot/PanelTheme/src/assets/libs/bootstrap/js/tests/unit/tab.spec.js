@@ -1,5 +1,5 @@
-import Tab from '~/PanelTheme/src/~/PanelTheme/src/src/tab'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '~/PanelTheme/src/helpers/fixture'
+import Tab from '../../src/tab'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Tab', () => {
   let fixtureEl

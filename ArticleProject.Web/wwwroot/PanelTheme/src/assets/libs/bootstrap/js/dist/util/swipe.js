@@ -4,8 +4,8 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./config'), require('~/PanelTheme/src/dom/event-handler'), require('./index')) :
-  typeof define === 'function' && define.amd ? define(['./config', '~/PanelTheme/src/dom/event-handler', './index'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./config'), require('../dom/event-handler'), require('./index')) :
+  typeof define === 'function' && define.amd ? define(['./config', '../dom/event-handler', './index'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Swipe = factory(global.Config, global.EventHandler, global.Index));
 })(this, (function (Config, EventHandler, index) { 'use strict';
 

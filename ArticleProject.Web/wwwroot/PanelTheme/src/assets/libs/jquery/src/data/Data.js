@@ -1,7 +1,7 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/core/camelCase",
-	"~/PanelTheme/src/var/rnothtmlwhite",
+	"../core",
+	"../core/camelCase",
+	"../var/rnothtmlwhite",
 	"./var/acceptData"
 ], function( jQuery, camelCase, rnothtmlwhite, acceptData ) {
 

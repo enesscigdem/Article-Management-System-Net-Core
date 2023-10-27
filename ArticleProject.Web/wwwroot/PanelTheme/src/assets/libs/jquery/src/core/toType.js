@@ -1,6 +1,6 @@
 define( [
-	"~/PanelTheme/src/var/class2type",
-	"~/PanelTheme/src/var/toString"
+	"../var/class2type",
+	"../var/toString"
 ], function( class2type, toString ) {
 
 "use strict";

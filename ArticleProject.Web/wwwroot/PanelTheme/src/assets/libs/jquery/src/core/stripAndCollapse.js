@@ -1,5 +1,5 @@
 define( [
-	"~/PanelTheme/src/var/rnothtmlwhite"
+	"../var/rnothtmlwhite"
 ], function( rnothtmlwhite ) {
 	"use strict";
 

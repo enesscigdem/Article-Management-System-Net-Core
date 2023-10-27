@@ -1,8 +1,8 @@
-import Defaults from '~/PanelTheme/src/settings/Defaults'
-import Config from '~/PanelTheme/src/settings/Config'
-import CoreUtils from '~/PanelTheme/src/CoreUtils'
-import Graphics from '~/PanelTheme/src/Graphics'
-import Utils from '~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
+import Defaults from '../settings/Defaults'
+import Config from '../settings/Config'
+import CoreUtils from '../CoreUtils'
+import Graphics from '../Graphics'
+import Utils from '../../utils/Utils'
 
 export default class UpdateHelpers {
   constructor(ctx) {

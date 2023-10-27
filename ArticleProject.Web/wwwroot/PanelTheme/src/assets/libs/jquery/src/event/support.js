@@ -1,5 +1,5 @@
 define( [
-	"~/PanelTheme/src/var/support"
+	"../var/support"
 ], function( support ) {
 
 "use strict";

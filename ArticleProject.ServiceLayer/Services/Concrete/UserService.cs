@@ -57,7 +57,7 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
 
         public async Task<bool> LoginAsync(string email, string password)
         {
-            var user = await unitOfWork.GetRepository<User>().GetAsync(u => u.Email == email);
+            var user = await unitOfWork.GetRepository<User>().GetAsync(u => u.Email == email && u.IsActive==true);
             if (user != null && password == user.Password)
                 return true;
             return false;
@@ -96,15 +96,16 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
             }
             return false;
         }
-
-
         private async Task<bool> IsEmailAndUsernameUniqueAsync(string email, string username)
         {
             var existingUser = await unitOfWork.GetRepository<User>().GetAsync(u => u.Email == email || u.UserName == username);
 
             return existingUser == null;
         }
-
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return await unitOfWork.GetRepository<User>().GetAsync(u => u.Email == email);
+        }
 
     }
 }

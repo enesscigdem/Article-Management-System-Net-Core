@@ -1,6 +1,6 @@
 define( [
 	"./core",
-	"~/PanelTheme/src/external/sizzle/dist/sizzle"
+	"../external/sizzle/dist/sizzle"
 ], function( jQuery, Sizzle ) {
 
 "use strict";

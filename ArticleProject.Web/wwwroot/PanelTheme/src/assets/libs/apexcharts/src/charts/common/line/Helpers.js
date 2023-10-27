@@ -1,5 +1,5 @@
-import CoreUtils from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/modules/CoreUtils'
-import Utils from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
+import CoreUtils from '../../../modules/CoreUtils'
+import Utils from '../../../utils/Utils'
 
 export default class Helpers {
   constructor(lineCtx) {

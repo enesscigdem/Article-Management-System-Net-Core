@@ -1,4 +1,4 @@
-import CoreUtils from '~/PanelTheme/src/CoreUtils'
+import CoreUtils from '../CoreUtils'
 
 export default class Helpers {
   constructor(annoCtx) {

@@ -1,8 +1,8 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/css/finalPropName",
+	"../core",
+	"../css/finalPropName",
 
-	"~/PanelTheme/src/css"
+	"../css"
 ], function( jQuery, finalPropName ) {
 
 "use strict";

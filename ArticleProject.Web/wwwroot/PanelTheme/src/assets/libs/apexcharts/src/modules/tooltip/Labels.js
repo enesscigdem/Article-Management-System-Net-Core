@@ -1,5 +1,5 @@
-import Formatters from '~/PanelTheme/src/Formatters'
-import DateTime from '~/PanelTheme/src/~/PanelTheme/src/utils/DateTime'
+import Formatters from '../Formatters'
+import DateTime from '../../utils/DateTime'
 import Utils from './Utils'
 
 /**

@@ -1,9 +1,9 @@
-import Animations from '~/PanelTheme/src/modules/Animations'
-import Graphics from '~/PanelTheme/src/modules/Graphics'
-import Fill from '~/PanelTheme/src/modules/Fill'
-import Utils from '~/PanelTheme/src/utils/Utils'
+import Animations from '../modules/Animations'
+import Graphics from '../modules/Graphics'
+import Fill from '../modules/Fill'
+import Utils from '../utils/Utils'
 import Helpers from './common/treemap/Helpers'
-import Filters from '~/PanelTheme/src/modules/Filters'
+import Filters from '../modules/Filters'
 
 /**
  * ApexCharts HeatMap Class.

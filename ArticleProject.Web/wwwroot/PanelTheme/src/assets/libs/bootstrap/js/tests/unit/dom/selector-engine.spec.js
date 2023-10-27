@@ -1,5 +1,5 @@
-import SelectorEngine from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/dom/selector-engine'
-import { getFixture, clearFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
+import SelectorEngine from '../../../src/dom/selector-engine'
+import { getFixture, clearFixture } from '../../helpers/fixture'
 
 describe('SelectorEngine', () => {
   let fixtureEl

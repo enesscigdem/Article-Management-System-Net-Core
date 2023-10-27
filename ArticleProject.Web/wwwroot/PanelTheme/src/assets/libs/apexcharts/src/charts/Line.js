@@ -1,10 +1,10 @@
-import CoreUtils from '~/PanelTheme/src/modules/CoreUtils'
-import Graphics from '~/PanelTheme/src/modules/Graphics'
-import Fill from '~/PanelTheme/src/modules/Fill'
-import DataLabels from '~/PanelTheme/src/modules/DataLabels'
-import Markers from '~/PanelTheme/src/modules/Markers'
+import CoreUtils from '../modules/CoreUtils'
+import Graphics from '../modules/Graphics'
+import Fill from '../modules/Fill'
+import DataLabels from '../modules/DataLabels'
+import Markers from '../modules/Markers'
 import Scatter from './Scatter'
-import Utils from '~/PanelTheme/src/utils/Utils'
+import Utils from '../utils/Utils'
 import Helpers from './common/line/Helpers'
 
 /**

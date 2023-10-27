@@ -1,6 +1,6 @@
 define( [
-	"~/PanelTheme/src/~/PanelTheme/src/core",
-	"~/PanelTheme/src/~/PanelTheme/src/core/isAttached"
+	"../../core",
+	"../../core/isAttached"
 
 	// css is assumed
 ], function( jQuery, isAttached ) {

@@ -17,5 +17,6 @@ namespace ArticleProject.ServiceLayer.Services.Abstract
         Task ActiveUser(Guid UserId);
         Task PassiveUser(Guid UserId);
         Task DeleteUser(Guid UserId);
+        Task<User> GetUserByEmail(string email);
     }
 }

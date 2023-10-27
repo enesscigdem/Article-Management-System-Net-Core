@@ -1,7 +1,7 @@
 import CoreUtils from './CoreUtils'
-import DateTime from './~/PanelTheme/src/utils/DateTime'
+import DateTime from './../utils/DateTime'
 import Series from './Series'
-import Utils from '~/PanelTheme/src/utils/Utils'
+import Utils from '../utils/Utils'
 import Defaults from './settings/Defaults'
 
 export default class Data {

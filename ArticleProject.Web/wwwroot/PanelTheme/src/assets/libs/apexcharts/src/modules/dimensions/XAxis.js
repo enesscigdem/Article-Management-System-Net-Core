@@ -1,7 +1,7 @@
-import Formatters from '~/PanelTheme/src/Formatters'
-import Graphics from '~/PanelTheme/src/Graphics'
-import Utils from '~/PanelTheme/src/~/PanelTheme/src/utils/Utils'
-import DateTime from '~/PanelTheme/src/~/PanelTheme/src/utils/DateTime'
+import Formatters from '../Formatters'
+import Graphics from '../Graphics'
+import Utils from '../../utils/Utils'
+import DateTime from '../../utils/DateTime'
 
 export default class DimXAxis {
   constructor(dCtx) {

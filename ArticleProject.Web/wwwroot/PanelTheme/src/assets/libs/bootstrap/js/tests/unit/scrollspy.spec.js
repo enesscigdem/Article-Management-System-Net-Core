@@ -1,8 +1,8 @@
-import ScrollSpy from '~/PanelTheme/src/~/PanelTheme/src/src/scrollspy'
+import ScrollSpy from '../../src/scrollspy'
 
 /** Test helpers */
-import { clearFixture, createEvent, getFixture, jQueryMock } from '~/PanelTheme/src/helpers/fixture'
-import EventHandler from '~/PanelTheme/src/~/PanelTheme/src/src/dom/event-handler'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import EventHandler from '../../src/dom/event-handler'
 
 describe('ScrollSpy', () => {
   let fixtureEl

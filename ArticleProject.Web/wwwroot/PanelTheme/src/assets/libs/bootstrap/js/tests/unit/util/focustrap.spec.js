@@ -1,7 +1,7 @@
-import FocusTrap from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/focustrap'
-import EventHandler from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/dom/event-handler'
-import SelectorEngine from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/dom/selector-engine'
-import { clearFixture, createEvent, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
+import FocusTrap from '../../../src/util/focustrap'
+import EventHandler from '../../../src/dom/event-handler'
+import SelectorEngine from '../../../src/dom/selector-engine'
+import { clearFixture, createEvent, getFixture } from '../../helpers/fixture'
 
 describe('FocusTrap', () => {
   let fixtureEl

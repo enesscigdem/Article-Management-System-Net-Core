@@ -1,10 +1,10 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/core/access",
-	"~/PanelTheme/src/core/nodeName",
+	"../core",
+	"../core/access",
+	"../core/nodeName",
 	"./support",
-	"~/PanelTheme/src/var/rnothtmlwhite",
-	"~/PanelTheme/src/selector"
+	"../var/rnothtmlwhite",
+	"../selector"
 ], function( jQuery, access, nodeName, support, rnothtmlwhite ) {
 
 "use strict";

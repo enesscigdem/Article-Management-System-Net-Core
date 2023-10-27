@@ -11,8 +11,10 @@ namespace ArticleProject.ServiceLayer.Services.Abstract
     public interface IArticleService
     {
         Task<List<ArticleListDto>> GetAllArticlesForApprove();
+        Task<List<UserArticlesDto>> GetUserArticles(UserArticlesDto userArticlesDto);
         Task ActiveArticle(Guid ArticleId);
         Task PassiveArticle(Guid ArticleId);
         Task DeleteArticle(Guid ArticleId);
+        Task AddArticleAsync(ArticleAddDto article);
     }
 }

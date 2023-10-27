@@ -1,6 +1,6 @@
-import * as Util from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/index'
-import { clearFixture, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
-import { noop } from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/index'
+import * as Util from '../../../src/util/index'
+import { clearFixture, getFixture } from '../../helpers/fixture'
+import { noop } from '../../../src/util/index'
 
 describe('Util', () => {
   let fixtureEl

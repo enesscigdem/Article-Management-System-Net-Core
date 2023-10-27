@@ -1,9 +1,9 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/var/isFunction",
+	"../core",
+	"../var/isFunction",
 	"./var/nonce",
 	"./var/rquery",
-	"~/PanelTheme/src/ajax"
+	"../ajax"
 ], function( jQuery, isFunction, nonce, rquery ) {
 
 "use strict";

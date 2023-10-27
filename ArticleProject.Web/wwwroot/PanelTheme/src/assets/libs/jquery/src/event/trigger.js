@@ -1,12 +1,12 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/var/document",
-	"~/PanelTheme/src/data/var/dataPriv",
-	"~/PanelTheme/src/data/var/acceptData",
-	"~/PanelTheme/src/var/hasOwn",
-	"~/PanelTheme/src/var/isFunction",
-	"~/PanelTheme/src/var/isWindow",
-	"~/PanelTheme/src/event"
+	"../core",
+	"../var/document",
+	"../data/var/dataPriv",
+	"../data/var/acceptData",
+	"../var/hasOwn",
+	"../var/isFunction",
+	"../var/isWindow",
+	"../event"
 ], function( jQuery, document, dataPriv, acceptData, hasOwn, isFunction, isWindow ) {
 
 "use strict";

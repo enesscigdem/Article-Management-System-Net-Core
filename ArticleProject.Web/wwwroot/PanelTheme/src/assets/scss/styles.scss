@@ -3,17 +3,17 @@
 @import "./variables/variables";
 
 // Import Bootstrap source files (Required file)
-@import "~/PanelTheme/src/libs/bootstrap/scss/bootstrap.scss";
+@import "../libs/bootstrap/scss/bootstrap.scss";
 
 
 @import "./variables/theme-variables";
 
 
 // Scrollbar style (Required file)
-@import "~/PanelTheme/src/libs/simplebar/dist/simplebar.css";
+@import "../libs/simplebar/dist/simplebar.css";
 
 // Tabler Icons style
-@import "~/PanelTheme/src/css/icons/tabler-icons/tabler-icons.css";
+@import "../css/icons/tabler-icons/tabler-icons.css";
 
 
 // Theme Layouts style (Required file)

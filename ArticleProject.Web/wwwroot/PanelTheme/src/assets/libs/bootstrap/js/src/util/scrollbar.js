@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import SelectorEngine from '~/PanelTheme/src/dom/selector-engine'
-import Manipulator from '~/PanelTheme/src/dom/manipulator'
+import SelectorEngine from '../dom/selector-engine'
+import Manipulator from '../dom/manipulator'
 import { isElement } from './index'
 
 /**

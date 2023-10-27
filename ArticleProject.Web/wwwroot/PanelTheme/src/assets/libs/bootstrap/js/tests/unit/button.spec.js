@@ -1,5 +1,5 @@
-import Button from '~/PanelTheme/src/~/PanelTheme/src/src/button'
-import { getFixture, clearFixture, jQueryMock } from '~/PanelTheme/src/helpers/fixture'
+import Button from '../../src/button'
+import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Button', () => {
   let fixtureEl

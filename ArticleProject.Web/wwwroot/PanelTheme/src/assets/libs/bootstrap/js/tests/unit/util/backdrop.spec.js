@@ -1,6 +1,6 @@
-import Backdrop from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/backdrop'
-import { getTransitionDurationFromElement } from '~/PanelTheme/src/~/PanelTheme/src/~/PanelTheme/src/src/util/index'
-import { clearFixture, getFixture } from '~/PanelTheme/src/~/PanelTheme/src/helpers/fixture'
+import Backdrop from '../../../src/util/backdrop'
+import { getTransitionDurationFromElement } from '../../../src/util/index'
+import { clearFixture, getFixture } from '../../helpers/fixture'
 
 const CLASS_BACKDROP = '.modal-backdrop'
 const CLASS_NAME_FADE = 'fade'

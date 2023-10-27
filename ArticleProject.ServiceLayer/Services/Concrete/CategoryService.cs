@@ -46,7 +46,7 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
 
         public async Task<List<CategoryListDto>> GetAllCategoriesForApprove()
         {
-            var categories = await unitOfWork.GetRepository<Category>().GetAllAsync();
+            var categories = await unitOfWork.GetRepository<Category>().GetAllAsync();  
             var map = mapper.Map<List<CategoryListDto>>(categories);
 
             return map;

@@ -6,7 +6,7 @@
  */
 
 import { isElement, toType } from './index'
-import Manipulator from '~/PanelTheme/src/dom/manipulator'
+import Manipulator from '../dom/manipulator'
 
 /**
  * Class definition

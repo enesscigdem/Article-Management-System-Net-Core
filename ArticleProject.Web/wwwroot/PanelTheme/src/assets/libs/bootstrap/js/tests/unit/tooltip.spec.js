@@ -1,7 +1,7 @@
-import Tooltip from '~/PanelTheme/src/~/PanelTheme/src/src/tooltip'
-import EventHandler from '~/PanelTheme/src/~/PanelTheme/src/src/dom/event-handler'
-import { noop } from '~/PanelTheme/src/~/PanelTheme/src/src/util/index'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '~/PanelTheme/src/helpers/fixture'
+import Tooltip from '../../src/tooltip'
+import EventHandler from '../../src/dom/event-handler'
+import { noop } from '../../src/util/index'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
 
 describe('Tooltip', () => {
   let fixtureEl

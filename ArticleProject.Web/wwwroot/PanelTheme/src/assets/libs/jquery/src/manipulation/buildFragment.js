@@ -1,7 +1,7 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/core/toType",
-	"~/PanelTheme/src/core/isAttached",
+	"../core",
+	"../core/toType",
+	"../core/isAttached",
 	"./var/rtagName",
 	"./var/rscriptType",
 	"./wrapMap",

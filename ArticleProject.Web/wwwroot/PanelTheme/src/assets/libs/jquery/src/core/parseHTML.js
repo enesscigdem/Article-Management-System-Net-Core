@@ -1,8 +1,8 @@
 define( [
-	"~/PanelTheme/src/core",
-	"~/PanelTheme/src/var/document",
+	"../core",
+	"../var/document",
 	"./var/rsingleTag",
-	"~/PanelTheme/src/manipulation/buildFragment",
+	"../manipulation/buildFragment",
 
 	// This is the only module that needs core/support
 	"./support"

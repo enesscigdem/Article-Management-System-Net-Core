@@ -1,5 +1,5 @@
 import Graphics from './Graphics'
-import Utils from './~/PanelTheme/src/utils/Utils'
+import Utils from './../utils/Utils'
 import Toolbar from './Toolbar'
 import Scales from './Scales'
 
