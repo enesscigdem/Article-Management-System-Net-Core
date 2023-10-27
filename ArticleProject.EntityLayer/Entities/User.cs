@@ -10,7 +10,7 @@ namespace ArticleProject.EntityLayer.Entities
 {
     public class User
     {
-        public Guid UserId { get; set; }
+        public Guid UserId { get; set; } = Guid.NewGuid();
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -18,8 +18,8 @@ namespace ArticleProject.EntityLayer.Entities
         public string Password { get; set; }
 
         public string ProfilePicture { get; set; }
-        public bool IsActive { get; set; }
-        public string Role { get; set; }
+        public bool IsActive { get; set; } = false;
+        public string Role { get; set; } = "USER";
 
         public List<Article> Articles { get; set; }
         public List<Comment> Comments { get; set; }

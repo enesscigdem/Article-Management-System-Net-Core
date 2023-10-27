@@ -16,6 +16,7 @@ namespace ArticleProject.ServiceLayer.AutoMapper.Users
         {
             CreateMap<User, UserListDto>().ReverseMap();
             CreateMap<User, RegisterDto>().ReverseMap();
+            CreateMap<User, UserProfileDto>().ReverseMap();
         }
     }
 }

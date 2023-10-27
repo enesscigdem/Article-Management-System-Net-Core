@@ -5,9 +5,11 @@ using ArticleProject.EntityLayer.Entities;
 using ArticleProject.ServiceLayer.Services.Abstract;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,12 +20,16 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly ClaimsPrincipal _user;
 
-        public UserService(IUnitOfWork unitOfWork, IMapper mapper, IWebHostEnvironment webHostEnvironment)
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor)
         {
             this.unitOfWork = unitOfWork;
             this.mapper = mapper;
             this.webHostEnvironment = webHostEnvironment;
+            this.httpContextAccessor = httpContextAccessor;
+            _user = httpContextAccessor.HttpContext.User;
         }
         public async Task DeleteUser(Guid UserId)
         {
@@ -57,7 +63,7 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
 
         public async Task<bool> LoginAsync(string email, string password)
         {
-            var user = await unitOfWork.GetRepository<User>().GetAsync(u => u.Email == email && u.IsActive==true);
+            var user = await unitOfWork.GetRepository<User>().GetAsync(u => u.Email == email && u.IsActive == true);
             if (user != null && password == user.Password)
                 return true;
             return false;
@@ -77,11 +83,12 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
             {
                 string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
                 if (!Directory.Exists(uploadsFolder))
-                {
                     Directory.CreateDirectory(uploadsFolder);
-                }
+                string userFolder = Path.Combine(uploadsFolder, "userimage");
+                if (!Directory.Exists(userFolder))
+                    Directory.CreateDirectory(userFolder);
                 string uniqueFileName = DateTime.Now.Millisecond + "_" + registerDto.ProfilePicture.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                string filePath = Path.Combine(userFolder, uniqueFileName);
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await registerDto.ProfilePicture.CopyToAsync(stream);
@@ -95,6 +102,15 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
                 return true;
             }
             return false;
+        }
+        public async Task<UserProfileDto> GetUserProfileAsync()
+        {
+            var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var getUserWithImage = await unitOfWork.GetRepository<User>().GetAsync(x => x.UserId == userId);
+            var map = mapper.Map<UserProfileDto>(getUserWithImage);
+
+            return map;
         }
         private async Task<bool> IsEmailAndUsernameUniqueAsync(string email, string username)
         {

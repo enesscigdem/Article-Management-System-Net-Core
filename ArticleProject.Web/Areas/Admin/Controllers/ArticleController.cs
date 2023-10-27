@@ -1,7 +1,11 @@
-﻿using ArticleProject.ServiceLayer.Services.Abstract;
+﻿using ArticleProject.EntityLayer.DTOs.Categories;
+using ArticleProject.EntityLayer.Entities;
+using ArticleProject.ServiceLayer.Services.Abstract;
 using ArticleProject.ServiceLayer.Services.Concrete;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
+using System.ComponentModel.DataAnnotations;
 
 namespace ArticleProject.Web.Areas.Admin.Controllers
 {

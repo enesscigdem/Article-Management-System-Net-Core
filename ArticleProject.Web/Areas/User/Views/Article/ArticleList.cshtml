@@ -27,7 +27,7 @@
                             <td>@(article.Title.Length > 30 ? article.Title.Substring(0, 30) + "..." : article.Title)</td>
                             <td>@(article.Content.Length > 30 ? article.Content.Substring(0, 30) + "..." : article.Content)</td>
                             <td>
-                                <a class="btn btn-primary btn-sm" data-id="@article.CategoryId" asp-area="User" asp-controller="Article" asp-action="UpdateArticle" asp-route-CategoryId="@article.CategoryId"><i class="ti ti-pencil"></i></a>
+                                <a class="btn btn-primary btn-sm" data-id="@article.ArticleId" asp-area="User" asp-controller="Article" asp-action="Update" asp-route-ArticleId="@article.ArticleId"><i class="ti ti-pencil"></i></a>
                                 <a class="btn btn-danger btn-sm" data-id="@article.ArticleId" asp-area="User" asp-controller="Article" asp-action="DeleteArticle" asp-route-ArticleId="@article.ArticleId"><i class="ti ti-trash"></i></a>
                             </td>
                         </tr>

@@ -18,5 +18,6 @@ namespace ArticleProject.ServiceLayer.Services.Abstract
         Task PassiveUser(Guid UserId);
         Task DeleteUser(Guid UserId);
         Task<User> GetUserByEmail(string email);
+        Task<UserProfileDto> GetUserProfileAsync();
     }
 }
