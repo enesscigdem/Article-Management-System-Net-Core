@@ -97,7 +97,7 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
                     await article.Image.CopyToAsync(stream);
                 }
 
-                newArticle.Image = uniqueFileName;
+               newArticle.Image = uniqueFileName;
             }
 
             await unitOfWork.GetRepository<Article>().AddAsync(newArticle);
@@ -112,18 +112,39 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
         public async Task UpdateArticleAsync(ArticleUpdateDto articleUpdateDto)
         {
             var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var article = await unitOfWork.GetRepository<Article>().GetAsync(x=>x.ArticleId == articleUpdateDto.ArticleId);
+            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => x.ArticleId == articleUpdateDto.ArticleId);
 
-            //if (articleUpdateDto.Image != null)
-            //{
-            //    if (article.Image != null)
-            //        imageHelper.Delete(article.Image.FileName);
-            //    var imageUpload = await imageHelper.Upload(articleUpdateDto.Title, articleUpdateDto.Photo, ImageType.Post);
-            //    Image image = new(imageUpload.FullName, articleUpdateDto.Photo.ContentType, userEmail);
-            //    await unitOfWork.GetRepository<Image>().AddAsync(image);
+            if (articleUpdateDto.Image != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                if (!Directory.Exists(uploadsFolder))
+                    Directory.CreateDirectory(uploadsFolder);
+                string userFolder = Path.Combine(uploadsFolder, "articleimage");
+                if (!Directory.Exists(userFolder))
+                    Directory.CreateDirectory(userFolder);
 
-            //    article.ImageId = image.Id;
-            //}
+                // Bu varsayılan bir formatta olduğunu varsayalım, örneğin base64.
+                string base64ImageData = articleUpdateDto.Image;
+                byte[] imageData = Convert.FromBase64String(base64ImageData);
+
+                // Şimdi bu veriyi bir MemoryStream'e aktarabiliriz.
+                using (MemoryStream stream = new MemoryStream(imageData))
+                {
+                    IFormFile imageFile = new FormFile(stream, 0, stream.Length, "Image", "image.jpg");
+
+                    string uniqueFileName = DateTime.Now.Millisecond + "_" + imageFile.FileName;
+                    string filePath = Path.Combine(userFolder, uniqueFileName);
+
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(fileStream);
+                    }
+
+                    article.Image = uniqueFileName;
+                }
+
+
+            }
 
             article.Title = articleUpdateDto.Title;
             article.Content = articleUpdateDto.Content;

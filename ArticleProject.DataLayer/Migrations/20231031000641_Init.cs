@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ArticleProject.DataLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class Initialize : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,7 +54,7 @@ namespace ArticleProject.DataLayer.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Views = table.Column<int>(type: "int", nullable: false),
                     Likes = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -160,11 +160,11 @@ namespace ArticleProject.DataLayer.Migrations
                 columns: new[] { "CategoryId", "CategoryName", "Description", "IsActive" },
                 values: new object[,]
                 {
+                    { new Guid("321dd3a2-1886-4b1d-8e31-bcf90910c483"), "Haber", "Haber Açıklaması", false },
+                    { new Guid("38501dc9-4d7a-4519-9a7f-49b26e213086"), "Gündem", "Gündem Açıklaması", false },
                     { new Guid("3ced153f-93fb-4415-a5e8-2f97d6ae5d73"), "Magazin", "Magazin Açıklaması", false },
-                    { new Guid("6715daba-e712-4766-aba9-9eb8d99156de"), "Gündem", "Gündem Açıklaması", false },
-                    { new Guid("724fe252-3b4e-404c-ac14-e70f70233eb9"), "Teknoloji", "Teknoloji Açıklaması", false },
-                    { new Guid("8994e51b-494b-4922-8eed-7cadb43bd6a7"), "Haber", "Haber Açıklaması", false },
-                    { new Guid("d71ec03f-40e9-46f2-8fe3-5b0f1b093157"), "Spor", "Spor Açıklaması", false }
+                    { new Guid("7f361614-cb58-424f-ac3d-37c4f3edcfe6"), "Spor", "Spor Açıklaması", false },
+                    { new Guid("ab8354be-403f-4a09-9367-13115c7d2124"), "Teknoloji", "Teknoloji Açıklaması", false }
                 });
 
             migrationBuilder.InsertData(
@@ -172,14 +172,14 @@ namespace ArticleProject.DataLayer.Migrations
                 columns: new[] { "UserId", "Email", "FirstName", "IsActive", "LastName", "Password", "ProfilePicture", "Role", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("9614dd78-111c-42ec-8f02-379368493c0a"), "busecinar@gmail.com", "Buse", true, "Çınar", "123456", "-", "USER", "busecinar" },
-                    { new Guid("baaa355f-6d4a-4e69-a6a1-f23ea5e90485"), "enescigdeem@gmail.com", "Enes", true, "Çiğdem", "123456", "-", "ADMIN", "enescigdeem" }
+                    { new Guid("8f5b5981-063e-4ba6-bddf-2c32ef602172"), "enescigdeem@gmail.com", "Enes", true, "Çiğdem", "123456", "-", "ADMIN", "enescigdeem" },
+                    { new Guid("9614dd78-111c-42ec-8f02-379368493c0a"), "busecinar@gmail.com", "Buse", true, "Çınar", "123456", "-", "USER", "busecinar" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "ArticleId", "AuthorId", "CategoryId", "Content", "CreationDate", "Image", "IsActive", "Likes", "Title", "Views" },
-                values: new object[] { new Guid("ccf34879-6916-45aa-94d5-a3aacc8ca804"), new Guid("9614dd78-111c-42ec-8f02-379368493c0a"), new Guid("3ced153f-93fb-4415-a5e8-2f97d6ae5d73"), "Lorem Ipsum, Çiçero'nun MÖ 45 yılında yazdığı \"de Finibus Bonorum et Malorum – İyi ve Kötünün Uç Sınırları\" eserindeki 1.30.32 sayılı paragrafında yer alır. Bu eser Rönesans döneminde etik teorileri üzerine bilimsel inceleme konusu haline gelmiştir. Lorem Ipsum 1500'lü yıllardan itibaren aşağıdaki formuyla standartlaşmıştır: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", new DateTime(2023, 10, 25, 17, 38, 33, 229, DateTimeKind.Local).AddTicks(5032), "-", true, 20, "Asp.net Core Deneme Makalesi 1", 41028 });
+                values: new object[] { new Guid("296db5ab-c931-499c-b00a-fc4e166bd3d7"), new Guid("9614dd78-111c-42ec-8f02-379368493c0a"), new Guid("3ced153f-93fb-4415-a5e8-2f97d6ae5d73"), "Lorem Ipsum, Çiçero'nun MÖ 45 yılında yazdığı \"de Finibus Bonorum et Malorum – İyi ve Kötünün Uç Sınırları\" eserindeki 1.30.32 sayılı paragrafında yer alır. Bu eser Rönesans döneminde etik teorileri üzerine bilimsel inceleme konusu haline gelmiştir. Lorem Ipsum 1500'lü yıllardan itibaren aşağıdaki formuyla standartlaşmıştır: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", new DateTime(2023, 10, 31, 3, 6, 41, 220, DateTimeKind.Local).AddTicks(2724), "-", true, 20, "Asp.net Core Deneme Makalesi 1", 41028 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_AuthorId",

@@ -68,8 +68,18 @@ namespace ArticleProject.Web.Areas.User.Controllers
             return View(articleUpdateDto);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(ArticleUpdateDto articleUpdateDto)
+        public async Task<IActionResult> Update(ArticleUpdateDto articleUpdateDto, IFormFile image)
         {
+            if (image != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    image.CopyTo(ms);
+                    byte[] imageBytes = ms.ToArray();
+                    articleUpdateDto.Image = Convert.ToBase64String(imageBytes);
+                }
+            }
+
             await articleService.UpdateArticleAsync(articleUpdateDto);
             toastNotification.AddSuccessToastMessage("Makale başarıyla güncellenmiştir.", new ToastrOptions { Title = "İşlem Başarılı" });
             return RedirectToAction("ArticleList", "Article", new { Area = "User" });

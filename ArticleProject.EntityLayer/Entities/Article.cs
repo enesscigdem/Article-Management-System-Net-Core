@@ -12,7 +12,7 @@ namespace ArticleProject.EntityLayer.Entities
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
-        public string Image { get; set; }
+        public string? Image { get; set; }
         public int Views { get; set; } = 0;
         public int Likes { get; set; }= 0;
         public bool IsActive { get; set; } = true;
