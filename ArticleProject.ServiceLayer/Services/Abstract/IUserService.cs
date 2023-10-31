@@ -19,5 +19,7 @@ namespace ArticleProject.ServiceLayer.Services.Abstract
         Task DeleteUser(Guid UserId);
         Task<User> GetUserByEmail(string email);
         Task<UserProfileDto> GetUserProfileAsync();
+        Task UpdateUserProfileAsync(UserProfileDto userProfileDto);
+        Task PassiveAccount();
     }
 }

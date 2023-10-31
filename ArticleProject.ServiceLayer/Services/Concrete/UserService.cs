@@ -1,11 +1,14 @@
 ﻿using ArticleProject.DataLayer.UnitOfWorks;
+using ArticleProject.EntityLayer.DTOs.Articles;
 using ArticleProject.EntityLayer.DTOs.Register;
 using ArticleProject.EntityLayer.DTOs.Users;
 using ArticleProject.EntityLayer.Entities;
+using ArticleProject.ServiceLayer.Extensions;
 using ArticleProject.ServiceLayer.Services.Abstract;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,10 +110,67 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
         {
             var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-            var getUserWithImage = await unitOfWork.GetRepository<User>().GetAsync(x => x.UserId == userId);
-            var map = mapper.Map<UserProfileDto>(getUserWithImage);
+            var getUser = await unitOfWork.GetRepository<User>().GetAsync(x => x.UserId == userId);
+            var map = mapper.Map<UserProfileDto>(getUser);
 
             return map;
+        }
+        public async Task UpdateUserProfileAsync(UserProfileDto userProfileDto)
+        {
+            var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var user = await unitOfWork.GetRepository<User>().GetAsync(x => x.UserId == userId);
+
+            if (user != null)
+            {
+                user.FirstName = userProfileDto.FirstName;
+                user.LastName = userProfileDto.LastName;
+                user.Email = userProfileDto.Email;
+                user.UserName = userProfileDto.UserName;
+
+                if (!string.IsNullOrEmpty(userProfileDto.NewPassword))
+                {
+                    user.Password = userProfileDto.NewPassword;
+                }
+
+                if (!string.IsNullOrEmpty(userProfileDto.ProfilePicture))
+                {
+                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                    if (!Directory.Exists(uploadsFolder))
+                        Directory.CreateDirectory(uploadsFolder);
+                    string userFolder = Path.Combine(uploadsFolder, "userimage");
+                    if (!Directory.Exists(userFolder))
+                        Directory.CreateDirectory(userFolder);
+
+                    // Resim byte dizisine dönüştürme
+                    byte[] imageBytes = Convert.FromBase64String(userProfileDto.ProfilePicture);
+
+                    // Resmi kaydetme
+                    string uniqueFileName = DateTime.Now.Millisecond + "_" + Guid.NewGuid() + ".jpg"; // Resim dosyasının adını benzersiz hale getir
+                    string filePath = Path.Combine(userFolder, uniqueFileName);
+
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await fileStream.WriteAsync(imageBytes, 0, imageBytes.Length);
+                    }
+
+                    user.ProfilePicture = userProfileDto.ProfilePicture;
+                }
+
+                await unitOfWork.GetRepository<User>().UpdateAsync(user);
+                await unitOfWork.SaveAsync();
+            }
+        }
+        public async Task PassiveAccount()
+        {
+            var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var user = await unitOfWork.GetRepository<User>().GetAsync(x => x.UserId == userId);
+
+            if (user != null)
+            {
+                user.IsActive = false;
+                await unitOfWork.GetRepository<User>().UpdateAsync(user);
+                await unitOfWork.SaveAsync();
+            }
         }
         private async Task<bool> IsEmailAndUsernameUniqueAsync(string email, string username)
         {
