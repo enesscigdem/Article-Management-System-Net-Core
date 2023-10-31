@@ -14,9 +14,6 @@ namespace ArticleProject.DataLayer.Mappings
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.HasMany(c => c.Articles)
-                   .WithOne(a => a.Category)
-                   .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasData(new Category
             {

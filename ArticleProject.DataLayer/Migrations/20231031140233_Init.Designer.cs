@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArticleProject.DataLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231031000641_Init")]
+    [Migration("20231031140233_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -25,6 +25,21 @@ namespace ArticleProject.DataLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ArticleCategory", b =>
+                {
+                    b.Property<Guid>("ArticlesArticleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoriesCategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ArticlesArticleId", "CategoriesCategoryId");
+
+                    b.HasIndex("CategoriesCategoryId");
+
+                    b.ToTable("ArticleCategory");
+                });
+
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Article", b =>
                 {
                     b.Property<Guid>("ArticleId")
@@ -32,9 +47,6 @@ namespace ArticleProject.DataLayer.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("AuthorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
@@ -64,18 +76,15 @@ namespace ArticleProject.DataLayer.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Articles");
 
                     b.HasData(
                         new
                         {
-                            ArticleId = new Guid("296db5ab-c931-499c-b00a-fc4e166bd3d7"),
+                            ArticleId = new Guid("b6c88083-570e-41b1-97b7-98829935a76b"),
                             AuthorId = new Guid("9614dd78-111c-42ec-8f02-379368493c0a"),
-                            CategoryId = new Guid("3ced153f-93fb-4415-a5e8-2f97d6ae5d73"),
                             Content = "Lorem Ipsum, Çiçero'nun MÖ 45 yılında yazdığı \"de Finibus Bonorum et Malorum – İyi ve Kötünün Uç Sınırları\" eserindeki 1.30.32 sayılı paragrafında yer alır. Bu eser Rönesans döneminde etik teorileri üzerine bilimsel inceleme konusu haline gelmiştir. Lorem Ipsum 1500'lü yıllardan itibaren aşağıdaki formuyla standartlaşmıştır: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            CreationDate = new DateTime(2023, 10, 31, 3, 6, 41, 220, DateTimeKind.Local).AddTicks(2724),
+                            CreationDate = new DateTime(2023, 10, 31, 17, 2, 33, 48, DateTimeKind.Local).AddTicks(309),
                             Image = "-",
                             IsActive = true,
                             Likes = 20,
@@ -115,28 +124,28 @@ namespace ArticleProject.DataLayer.Migrations
                         },
                         new
                         {
-                            CategoryId = new Guid("7f361614-cb58-424f-ac3d-37c4f3edcfe6"),
+                            CategoryId = new Guid("6cc90f01-56b1-41eb-80fe-1fa1ce6180be"),
                             CategoryName = "Spor",
                             Description = "Spor Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("38501dc9-4d7a-4519-9a7f-49b26e213086"),
+                            CategoryId = new Guid("ed391fd7-4a9b-45a1-a53f-d32ecc000aaa"),
                             CategoryName = "Gündem",
                             Description = "Gündem Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("321dd3a2-1886-4b1d-8e31-bcf90910c483"),
+                            CategoryId = new Guid("8ac5594c-8771-45db-aab0-3799e1086981"),
                             CategoryName = "Haber",
                             Description = "Haber Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("ab8354be-403f-4a09-9367-13115c7d2124"),
+                            CategoryId = new Guid("87cfa4eb-fb6f-457b-bcc4-d470bc452b59"),
                             CategoryName = "Teknoloji",
                             Description = "Teknoloji Açıklaması",
                             IsActive = false
@@ -257,7 +266,7 @@ namespace ArticleProject.DataLayer.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("8f5b5981-063e-4ba6-bddf-2c32ef602172"),
+                            UserId = new Guid("55a91adc-9a93-4900-af1a-2daf35b2360e"),
                             Email = "enescigdeem@gmail.com",
                             FirstName = "Enes",
                             IsActive = true,
@@ -281,6 +290,21 @@ namespace ArticleProject.DataLayer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ArticleCategory", b =>
+                {
+                    b.HasOne("ArticleProject.EntityLayer.Entities.Article", null)
+                        .WithMany()
+                        .HasForeignKey("ArticlesArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ArticleProject.EntityLayer.Entities.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Article", b =>
                 {
                     b.HasOne("ArticleProject.EntityLayer.Entities.User", "Author")
@@ -289,15 +313,7 @@ namespace ArticleProject.DataLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ArticleProject.EntityLayer.Entities.Category", "Category")
-                        .WithMany("Articles")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Author");
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Comment", b =>
@@ -360,11 +376,6 @@ namespace ArticleProject.DataLayer.Migrations
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Article", b =>
                 {
                     b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Category", b =>
-                {
-                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.User", b =>

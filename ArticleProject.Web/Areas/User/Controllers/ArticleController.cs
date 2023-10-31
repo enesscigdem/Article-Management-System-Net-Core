@@ -38,6 +38,7 @@ namespace ArticleProject.Web.Areas.User.Controllers
             var categories = await categoryService.GetAllCategoriesForApprove();
             return View(new ArticleAddDto { Categories = categories });
         }
+
         [HttpPost]
         public async Task<IActionResult> ArticleAdd(ArticleAddDto article)
         {
@@ -47,10 +48,12 @@ namespace ArticleProject.Web.Areas.User.Controllers
             }
 
             await articleService.AddArticleAsync(article);
+
             toastNotification.AddSuccessToastMessage("Makale başarıyla eklenmiştir.", new ToastrOptions { Title = "İşlem Başarılı" });
 
             return RedirectToAction("ArticleList", "Article", new { Area = "User" });
         }
+
         public async Task<IActionResult> DeleteArticle(Guid ArticleId)
         {
             await articleService.DeleteArticle(ArticleId);
@@ -79,7 +82,11 @@ namespace ArticleProject.Web.Areas.User.Controllers
                     articleUpdateDto.Image = Convert.ToBase64String(imageBytes);
                 }
             }
-
+            // Kategorileri seçilmiş kategori ID'lerine dönüştür
+            if (articleUpdateDto.CategoryIds != null)
+            {
+                articleUpdateDto.CategoryIds = articleUpdateDto.CategoryIds ?? new List<Guid>();
+            }
             await articleService.UpdateArticleAsync(articleUpdateDto);
             toastNotification.AddSuccessToastMessage("Makale başarıyla güncellenmiştir.", new ToastrOptions { Title = "İşlem Başarılı" });
             return RedirectToAction("ArticleList", "Article", new { Area = "User" });

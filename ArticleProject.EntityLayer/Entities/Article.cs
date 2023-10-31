@@ -17,8 +17,7 @@ namespace ArticleProject.EntityLayer.Entities
         public int Likes { get; set; }= 0;
         public bool IsActive { get; set; } = true;
 
-        public Guid CategoryId { get; set; }
-        public Category Category { get; set; }
+        public List<Category> Categories { get; set; }
 
         public Guid AuthorId { get; set; }
         public User Author { get; set; }

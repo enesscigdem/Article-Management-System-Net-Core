@@ -28,7 +28,6 @@ namespace ArticleProject.DataLayer.Mappings
                 Views = 41028,
                 Likes = 20,
                 IsActive = true,
-                CategoryId = Guid.Parse("3ced153f-93fb-4415-a5e8-2f97d6ae5d73"),
                 AuthorId = Guid.Parse("9614dd78-111c-42ec-8f02-379368493c0a"),
             });
         }

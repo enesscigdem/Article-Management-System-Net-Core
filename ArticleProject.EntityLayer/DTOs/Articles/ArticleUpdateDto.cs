@@ -14,7 +14,7 @@ namespace ArticleProject.EntityLayer.DTOs.Articles
         public Guid ArticleId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public Guid CategoryId { get; set; }
+        public List<Guid> CategoryIds { get; set; } // Birden fazla kategoriye sahip olabilmesi için Guid listesi
         public string? Image { get; set; }
         public IList<CategoryListDto> Categories { get; set; }
     }

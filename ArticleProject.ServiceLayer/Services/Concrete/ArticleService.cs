@@ -9,6 +9,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,12 +77,26 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
 
             return map;
         }
+        private async Task<List<Category>> GetSelectedCategories(List<Guid> categoryIds)
+        {
+            var categories = new List<Category>();
+            foreach (var categoryId in categoryIds)
+            {
+                var category = await unitOfWork.GetRepository<Category>().GetByGuidAsync(categoryId);
+                if (category != null)
+                {
+                    categories.Add(category);
+                }
+            }
+            return categories;
+        }
         public async Task AddArticleAsync(ArticleAddDto article)
         {
             var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             var newArticle = mapper.Map<Article>(article);
             newArticle.AuthorId = userId;
+            newArticle.Categories = await GetSelectedCategories(article.CategoryIds);
             if (article.Image != null)
             {
                 string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
@@ -112,7 +127,8 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
         public async Task UpdateArticleAsync(ArticleUpdateDto articleUpdateDto)
         {
             var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => x.ArticleId == articleUpdateDto.ArticleId);
+            var article = await unitOfWork.GetRepository<Article>().Include(a => a.Categories).FirstOrDefaultAsync(a => a.ArticleId == articleUpdateDto.ArticleId);
+
 
             if (articleUpdateDto.Image != null)
             {
@@ -123,34 +139,47 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
                 if (!Directory.Exists(userFolder))
                     Directory.CreateDirectory(userFolder);
 
-                // Bu varsayılan bir formatta olduğunu varsayalım, örneğin base64.
-                string base64ImageData = articleUpdateDto.Image;
-                byte[] imageData = Convert.FromBase64String(base64ImageData);
+                // Resim byte dizisine dönüştürme
+                byte[] imageBytes = Convert.FromBase64String(articleUpdateDto.Image);
 
-                // Şimdi bu veriyi bir MemoryStream'e aktarabiliriz.
-                using (MemoryStream stream = new MemoryStream(imageData))
+                // Resmi kaydetme
+                string uniqueFileName = DateTime.Now.Millisecond + "_" + Guid.NewGuid() + ".jpg"; // Resim dosyasının adını benzersiz hale getir
+                string filePath = Path.Combine(userFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    IFormFile imageFile = new FormFile(stream, 0, stream.Length, "Image", "image.jpg");
-
-                    string uniqueFileName = DateTime.Now.Millisecond + "_" + imageFile.FileName;
-                    string filePath = Path.Combine(userFolder, uniqueFileName);
-
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await imageFile.CopyToAsync(fileStream);
-                    }
-
-                    article.Image = uniqueFileName;
+                    await fileStream.WriteAsync(imageBytes, 0, imageBytes.Length);
                 }
 
-
+                article.Image = uniqueFileName;
             }
 
             article.Title = articleUpdateDto.Title;
             article.Content = articleUpdateDto.Content;
-            article.CategoryId = articleUpdateDto.CategoryId;
+            // Yeni seçilen kategorileri al
+            var selectedCategories = await GetSelectedCategories(articleUpdateDto.CategoryIds);
+
+            // Önceki kategorileri makaleden kaldır
+            foreach (var category in article.Categories.ToList())
+            {
+                if (!selectedCategories.Contains(category))
+                {
+                    article.Categories.Remove(category);
+                }
+            }
+
+            // Eğer yeni bir kategori eklendiyse, makaleye ekle
+            foreach (var category in selectedCategories)
+            {
+                if (!article.Categories.Contains(category))
+                {
+                    article.Categories.Add(category);
+                }
+            }
+
             await unitOfWork.GetRepository<Article>().UpdateAsync(article);
             await unitOfWork.SaveAsync();
         }
+
     }
 }

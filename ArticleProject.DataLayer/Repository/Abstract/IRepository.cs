@@ -18,5 +18,6 @@ namespace ArticleProject.DataLayer.Repository.Abstract
         Task DeleteAsync(T entity);
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
         Task<int> CountAsync(Expression<Func<T, bool>> predicate = null);
+        IQueryable<T> Include(params Expression<Func<T, object>>[] includes);
     }
 }

@@ -74,5 +74,15 @@ namespace ArticleProject.DataLayer.Repository.Concrete
                 return await Table.CountAsync(predicate);
             return await Table.CountAsync();
         }
+        public IQueryable<T> Include(params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = Table;
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+            return query;
+        }
+
     }
 }
