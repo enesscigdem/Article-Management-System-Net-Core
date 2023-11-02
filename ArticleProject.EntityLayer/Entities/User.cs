@@ -20,11 +20,12 @@ namespace ArticleProject.EntityLayer.Entities
         public string ProfilePicture { get; set; }
         public bool IsActive { get; set; } = false;
         public string Role { get; set; } = "USER";
-
+        public string? PreviousPassword1 { get; set; }
+        public string? PreviousPassword2 { get; set; }
+        public string? PreviousPassword3 { get; set; }
         public List<Article> Articles { get; set; }
         public List<Comment> Comments { get; set; }
         public List<Like> Likes { get; set; }
-        public List<Follow> Followers { get; set; }
-        public List<Follow> Following { get; set; }
+        public List<FollowCategory> FollowedCategories { get; set; }
     }
 }

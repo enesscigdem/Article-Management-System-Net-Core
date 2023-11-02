@@ -6,6 +6,7 @@ using ArticleProject.EntityLayer.Entities;
 using ArticleProject.ServiceLayer.Extensions;
 using ArticleProject.ServiceLayer.Services.Abstract;
 using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -129,6 +130,16 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
 
                 if (!string.IsNullOrEmpty(userProfileDto.NewPassword))
                 {
+                    if (!IsNewPasswordDistinct(user, userProfileDto.NewPassword))
+                    {
+                        throw new ValidationException("Son 3 şifreniz birbirinden farklı olmalıdır!");
+                    }
+
+                    // Update the previous password history
+                    user.PreviousPassword3 = user.PreviousPassword2;
+                    user.PreviousPassword2 = user.PreviousPassword1;
+                    user.PreviousPassword1 = user.Password;
+
                     user.Password = userProfileDto.NewPassword;
                 }
 
@@ -183,5 +194,13 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
             return await unitOfWork.GetRepository<User>().GetAsync(u => u.Email == email);
         }
 
+        private bool IsNewPasswordDistinct(User user, string newPassword)
+        {
+            // Check if the new password is different from the previous three passwords
+            return newPassword != user.Password &&
+                newPassword != user.PreviousPassword1 &&
+                newPassword != user.PreviousPassword2 &&
+                newPassword != user.PreviousPassword3;
+        }
     }
 }

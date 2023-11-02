@@ -27,7 +27,7 @@ namespace ArticleProject.DataLayer.Context
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
-        public DbSet<Follow> Follows { get; set; }
+        public DbSet<FollowCategory> Follows { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

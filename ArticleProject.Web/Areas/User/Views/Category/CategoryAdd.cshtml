@@ -1,0 +1,23 @@
+﻿@model CategoryListDto
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Kategori Yönetimi /</span> Kategori Ekle</h4>
+    <form asp-area="User" asp-controller="Category" asp-action="CategoryAdd" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="card-body">
+            <div class="form-group">
+                <label asp-for="CategoryName" class="form-label">Başlık</label>
+                <input asp-for="CategoryName" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Başlık Giriniz" aria-describedby="defaultFormControlHelp">
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="form-label">İçerik</label>
+                <textarea asp-for="Description" class="form-control mb-3" id="defaultFormControlInput" style="min-height:150px;" placeholder="İçerik Giriniz" aria-describedby="defaultFormControlHelp"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Kaydet</button>
+            </div>
+        </div>
+    </form>
+</div>

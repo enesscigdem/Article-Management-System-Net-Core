@@ -14,14 +14,6 @@ namespace ArticleProject.DataLayer.Mappings
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasMany(u => u.Followers)
-                   .WithOne(f => f.Following)
-                   .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasMany(u => u.Following)
-                   .WithOne(f => f.Follower)
-                   .OnDelete(DeleteBehavior.Restrict);
-
             builder.HasData(new User
             {
                 UserId = Guid.NewGuid(),

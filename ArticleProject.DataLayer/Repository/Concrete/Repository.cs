@@ -1,5 +1,6 @@
 ﻿using ArticleProject.DataLayer.Context;
 using ArticleProject.DataLayer.Repository.Abstract;
+using ArticleProject.EntityLayer.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -83,6 +84,5 @@ namespace ArticleProject.DataLayer.Repository.Concrete
             }
             return query;
         }
-
     }
 }

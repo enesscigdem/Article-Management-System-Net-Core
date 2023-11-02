@@ -1,0 +1,37 @@
+﻿@model List<FollowCategory>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Kategori /</span> Takip Ettiğim Kategoriler</h4>
+
+    <div class="card">
+        <div class="table-responsive text-nowrap m-3">
+            <table class="table table-bordered" id="userTable" width="100%" collspacing="0">
+                <thead>
+                    <tr>
+                        <th>Kategori Adı</th>
+                        <th>Takibi Bırak</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Kategori Adı</th>
+                        <th>Takibi Bırak</th>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var cat in Model)
+                    {
+                        <tr name="@cat.CategoryId">
+                            <td>@cat.Category.CategoryName</td>
+                            <td>
+                                <a class="btn btn-info" data-id="@cat.CategoryId" asp-area="User" asp-controller="Category" asp-action="UnfollowCategory" asp-route-CategoryId="@cat.CategoryId"> Takibi Bırak </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/userList.js" type="application/ecmascript"></script>
+}

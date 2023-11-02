@@ -14,10 +14,14 @@ namespace ArticleProject.ServiceLayer.FluentValidations
         {
             RuleFor(x => x.CategoryName)
                 .NotEmpty()
-                .NotNull()
                 .MinimumLength(3)
                 .MaximumLength(100)
                 .WithName("Kategori Adı");
+            RuleFor(x => x.Description)
+              .NotEmpty()
+              .MinimumLength(3)
+              .MaximumLength(1000)
+              .WithName("Kategori Açıklaması");
         }
     }
 }

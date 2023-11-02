@@ -4,6 +4,8 @@ using ArticleProject.EntityLayer.Entities;
 using ArticleProject.ServiceLayer.Services.Abstract;
 using ArticleProject.ServiceLayer.Services.Concrete;
 using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using System.ComponentModel.DataAnnotations;
@@ -15,16 +17,18 @@ namespace ArticleProject.Web.Areas.User.Controllers
     {
         private readonly IArticleService articleService;
         private readonly ICategoryService categoryService;
-        private readonly IUserService userService;
         private readonly IToastNotification toastNotification;
         private readonly IMapper mapper;
-        public ArticleController(IArticleService article, IToastNotification toastNotification, ICategoryService categoryService, IUserService userService, IMapper mapper)
+        private readonly IValidator<ArticleAddDto> validator;
+        private readonly IValidator<ArticleUpdateDto> validatorUpdate;
+        public ArticleController(IArticleService article, IToastNotification toastNotification, ICategoryService categoryService, IMapper mapper, IValidator<ArticleAddDto> validator, IValidator<ArticleUpdateDto> validatorUpdate)
         {
             this.articleService = article;
             this.toastNotification = toastNotification;
             this.categoryService = categoryService;
-            this.userService = userService;
             this.mapper = mapper;
+            this.validator = validator;
+            this.validatorUpdate = validatorUpdate;
         }
         [HttpGet]
         public async Task<IActionResult> ArticleList(UserArticlesDto userArticlesDto)
@@ -42,16 +46,19 @@ namespace ArticleProject.Web.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> ArticleAdd(ArticleAddDto article)
         {
-            if (!ModelState.IsValid)
+            var result = await validator.ValidateAsync(article);
+
+            if (result.IsValid)
             {
-                return View(article);
+                await articleService.AddArticleAsync(article);
+
+                toastNotification.AddSuccessToastMessage("Makale başarıyla eklenmiştir.", new ToastrOptions { Title = "İşlem Başarılı" });
+
+                return RedirectToAction("ArticleList", "Article", new { Area = "User" });
             }
-
-            await articleService.AddArticleAsync(article);
-
-            toastNotification.AddSuccessToastMessage("Makale başarıyla eklenmiştir.", new ToastrOptions { Title = "İşlem Başarılı" });
-
-            return RedirectToAction("ArticleList", "Article", new { Area = "User" });
+            result.AddToModelState(this.ModelState);
+            article.Categories = await categoryService.GetAllCategoriesForApprove();
+            return View(article);
         }
 
         public async Task<IActionResult> DeleteArticle(Guid ArticleId)
@@ -73,23 +80,31 @@ namespace ArticleProject.Web.Areas.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(ArticleUpdateDto articleUpdateDto, IFormFile image)
         {
-            if (image != null)
+            var result = await validatorUpdate.ValidateAsync(articleUpdateDto);
+
+            if (result.IsValid)
             {
-                using (MemoryStream ms = new MemoryStream())
+                if (image != null)
                 {
-                    image.CopyTo(ms);
-                    byte[] imageBytes = ms.ToArray();
-                    articleUpdateDto.Image = Convert.ToBase64String(imageBytes);
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        image.CopyTo(ms);
+                        byte[] imageBytes = ms.ToArray();
+                        articleUpdateDto.Image = Convert.ToBase64String(imageBytes);
+                    }
                 }
+                // Kategorileri seçilmiş kategori ID'lerine dönüştür
+                if (articleUpdateDto.CategoryIds != null)
+                {
+                    articleUpdateDto.CategoryIds = articleUpdateDto.CategoryIds ?? new List<Guid>();
+                }
+                await articleService.UpdateArticleAsync(articleUpdateDto);
+                toastNotification.AddSuccessToastMessage("Makale başarıyla güncellenmiştir.", new ToastrOptions { Title = "İşlem Başarılı" });
+                return RedirectToAction("ArticleList", "Article", new { Area = "User" });
             }
-            // Kategorileri seçilmiş kategori ID'lerine dönüştür
-            if (articleUpdateDto.CategoryIds != null)
-            {
-                articleUpdateDto.CategoryIds = articleUpdateDto.CategoryIds ?? new List<Guid>();
-            }
-            await articleService.UpdateArticleAsync(articleUpdateDto);
-            toastNotification.AddSuccessToastMessage("Makale başarıyla güncellenmiştir.", new ToastrOptions { Title = "İşlem Başarılı" });
-            return RedirectToAction("ArticleList", "Article", new { Area = "User" });
+            result.AddToModelState(this.ModelState);
+            articleUpdateDto.Categories = await categoryService.GetAllCategoriesForApprove();
+            return View(articleUpdateDto);
         }
     }
 }

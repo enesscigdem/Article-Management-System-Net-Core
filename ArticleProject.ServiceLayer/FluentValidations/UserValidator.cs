@@ -1,4 +1,6 @@
-﻿using ArticleProject.EntityLayer.Entities;
+﻿using ArticleProject.EntityLayer.DTOs.Users;
+using ArticleProject.EntityLayer.Entities;
+using ArticleProject.ServiceLayer.AutoMapper.Users;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -42,10 +44,6 @@ namespace ArticleProject.ServiceLayer.FluentValidations
                .MinimumLength(3)
                .MaximumLength(100)
                .WithName("Şifre");
-
-            RuleFor(x => x.ProfilePicture)
-               .NotEmpty()
-               .WithName("Profil Fotoğrafı");
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArticleProject.DataLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231031140233_Init")]
+    [Migration("20231101140137_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -81,10 +81,10 @@ namespace ArticleProject.DataLayer.Migrations
                     b.HasData(
                         new
                         {
-                            ArticleId = new Guid("b6c88083-570e-41b1-97b7-98829935a76b"),
+                            ArticleId = new Guid("7314dc5f-cdbf-4ad9-98cd-4f42fd9bf0f7"),
                             AuthorId = new Guid("9614dd78-111c-42ec-8f02-379368493c0a"),
                             Content = "Lorem Ipsum, Çiçero'nun MÖ 45 yılında yazdığı \"de Finibus Bonorum et Malorum – İyi ve Kötünün Uç Sınırları\" eserindeki 1.30.32 sayılı paragrafında yer alır. Bu eser Rönesans döneminde etik teorileri üzerine bilimsel inceleme konusu haline gelmiştir. Lorem Ipsum 1500'lü yıllardan itibaren aşağıdaki formuyla standartlaşmıştır: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            CreationDate = new DateTime(2023, 10, 31, 17, 2, 33, 48, DateTimeKind.Local).AddTicks(309),
+                            CreationDate = new DateTime(2023, 11, 1, 17, 1, 37, 342, DateTimeKind.Local).AddTicks(2962),
                             Image = "-",
                             IsActive = true,
                             Likes = 20,
@@ -124,28 +124,28 @@ namespace ArticleProject.DataLayer.Migrations
                         },
                         new
                         {
-                            CategoryId = new Guid("6cc90f01-56b1-41eb-80fe-1fa1ce6180be"),
+                            CategoryId = new Guid("885c5f97-3717-4f34-a18c-f7cb85f54bed"),
                             CategoryName = "Spor",
                             Description = "Spor Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("ed391fd7-4a9b-45a1-a53f-d32ecc000aaa"),
+                            CategoryId = new Guid("3bb002d3-33b1-49b7-8fcf-ca0c5f91f75c"),
                             CategoryName = "Gündem",
                             Description = "Gündem Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("8ac5594c-8771-45db-aab0-3799e1086981"),
+                            CategoryId = new Guid("12b68100-b9d1-4112-9a02-b94685207194"),
                             CategoryName = "Haber",
                             Description = "Haber Açıklaması",
                             IsActive = false
                         },
                         new
                         {
-                            CategoryId = new Guid("87cfa4eb-fb6f-457b-bcc4-d470bc452b59"),
+                            CategoryId = new Guid("60e11187-a165-4df5-afa6-cb1ca95f7776"),
                             CategoryName = "Teknoloji",
                             Description = "Teknoloji Açıklaması",
                             IsActive = false
@@ -180,23 +180,17 @@ namespace ArticleProject.DataLayer.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Follow", b =>
+            modelBuilder.Entity("ArticleProject.EntityLayer.Entities.FollowCategory", b =>
                 {
-                    b.Property<Guid>("FollowId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("FollowerId")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("FollowingId")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasKey("UserId", "CategoryId");
 
-                    b.HasKey("FollowId");
-
-                    b.HasIndex("FollowerId");
-
-                    b.HasIndex("FollowingId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Follows");
                 });
@@ -247,6 +241,15 @@ namespace ArticleProject.DataLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PreviousPassword1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreviousPassword2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreviousPassword3")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProfilePicture")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -266,7 +269,7 @@ namespace ArticleProject.DataLayer.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = new Guid("55a91adc-9a93-4900-af1a-2daf35b2360e"),
+                            UserId = new Guid("0257e8d0-f7bd-42a4-ac95-be4be87facf2"),
                             Email = "enescigdeem@gmail.com",
                             FirstName = "Enes",
                             IsActive = true,
@@ -335,23 +338,23 @@ namespace ArticleProject.DataLayer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Follow", b =>
+            modelBuilder.Entity("ArticleProject.EntityLayer.Entities.FollowCategory", b =>
                 {
-                    b.HasOne("ArticleProject.EntityLayer.Entities.User", "Follower")
-                        .WithMany("Following")
-                        .HasForeignKey("FollowerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("ArticleProject.EntityLayer.Entities.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ArticleProject.EntityLayer.Entities.User", "Following")
-                        .WithMany("Followers")
-                        .HasForeignKey("FollowingId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("ArticleProject.EntityLayer.Entities.User", "User")
+                        .WithMany("FollowedCategories")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Follower");
+                    b.Navigation("Category");
 
-                    b.Navigation("Following");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ArticleProject.EntityLayer.Entities.Like", b =>
@@ -384,9 +387,7 @@ namespace ArticleProject.DataLayer.Migrations
 
                     b.Navigation("Comments");
 
-                    b.Navigation("Followers");
-
-                    b.Navigation("Following");
+                    b.Navigation("FollowedCategories");
 
                     b.Navigation("Likes");
                 });

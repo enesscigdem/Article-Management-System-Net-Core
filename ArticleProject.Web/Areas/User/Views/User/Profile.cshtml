@@ -22,37 +22,37 @@
                     </div>
                     <hr class="my-0">
                     <div class="card-body">
-                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label asp-for="FirstName" class="form-label">İsim</label>
                                 <input asp-for="FirstName" class="form-control" type="text" autofocus="">
-                                <span asp-validation-for="FirstName"></span>
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label asp-for="LastName" class="form-label">Soyisim</label>
                                 <input asp-for="LastName" class="form-control" type="text" autofocus="">
-                                <span asp-validation-for="LastName"></span>
+                                <span asp-validation-for="LastName" class="text-danger"></span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label asp-for="Email" class="form-label">Email Adresi</label>
                                 <input asp-for="Email" class="form-control" type="text" autofocus="">
-                                <span asp-validation-for="Email"></span>
+                                <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
                                 <input asp-for="UserName" class="form-control" type="text" autofocus="">
-                                <span asp-validation-for="UserName"></span>
+                                <span asp-validation-for="UserName" class="text-danger"></span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label asp-for="Password" class="form-label">Mevcut Parola <strong>*</strong></label>
                                 <input asp-for="Password" class="form-control" type="text" autofocus="">
-                                <span asp-validation-for="Password"></span>
+                                <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label asp-for="NewPassword" class="form-label">Yeni Parola (Opsiyonel)</label>
                                 <input asp-for="NewPassword" class="form-control" type="text" autofocus="">
-                                <span asp-validation-for="NewPassword"></span>
+                                <span asp-validation-for="NewPassword" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="mt-2">
