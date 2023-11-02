@@ -1,32 +1,60 @@
-﻿using ArticleProject.Web.Models;
+﻿using ArticleProject.DataLayer.UnitOfWorks;
+using ArticleProject.EntityLayer.DTOs.Articles;
+using ArticleProject.EntityLayer.Entities;
+using ArticleProject.ServiceLayer.Services.Abstract;
+using ArticleProject.Web.Models;
+using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace ArticleProject.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IArticleService articleService;
+        private readonly IMapper mapper;
+        private readonly IToastNotification toastNotification;
+        public HomeController(IArticleService article, IMapper mapper, IToastNotification toastNotification)
         {
-            _logger = logger;
+            this.articleService = article;
+            this.mapper = mapper;
+            this.toastNotification = toastNotification;
         }
-
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var result = await articleService.Get10ActiveArticles();
+            return View(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> ArticleDetail(Guid ArticleId)
+        {
+            var result = await articleService.GetArticleDetailsByGuid(ArticleId);
+            return View(result);
+        }
+        [HttpGet]
+        public IActionResult About()
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        [HttpPost]
+        public async Task<IActionResult> AddComment(Guid articleId, string content)
         {
-            return View();
+            var comment = await articleService.AddComment(articleId,content);
+            if (comment == null)
+            {
+                toastNotification.AddWarningToastMessage("Yorum yaparken bir hata oluştu!.", new ToastrOptions { Title = "Hatalı İşlem" });
+            }
+            toastNotification.AddInfoToastMessage("Yorum başarıyla yapılmıştır", new ToastrOptions { Title = "İşlem Başarılı" });
+            return RedirectToAction("ArticleDetail", "Home", new { ArticleId = articleId, Area = "" });
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public async Task<IActionResult> LikeArticle(Guid articleId)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            await articleService.LikeArticle(articleId);
+            return RedirectToAction("ArticleDetail", "Home", new { ArticleId = articleId, Area=""});
         }
     }
 }

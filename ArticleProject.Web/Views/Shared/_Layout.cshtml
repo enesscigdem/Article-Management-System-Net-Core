@@ -1,49 +1,113 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ArticleProject.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ArticleProject.Web.styles.css" asp-append-version="true" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+    <title>Blogger</title>
+
+    <link href="~/stand-blog/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="~/stand-blog/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/stand-blog/assets/css/templatemo-stand-blog.css">
+    <link rel="stylesheet" href="~/stand-blog/assets/css/owl.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ArticleProject.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <header class="">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><h2>Blogger<em>.</em></h2></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item @((Context.Request.RouteValues["controller"].ToString() == "Home" && Context.Request.RouteValues["action"].ToString() == "Index") ? "active" : "")">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">
+                                Anasayfa
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item @((Context.Request.RouteValues["controller"].ToString() == "Home" && Context.Request.RouteValues["action"].ToString() == "About") ? "active" : "")">
+                            <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">Hakkımızda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" href="blog.html">Kategoriler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Account" asp-action="Register" class="btn btn-info">KAYIT OL</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+    <div class="main-banner header-text"></div>
+    <div style="height:150px"></div>
+    @RenderBody()
+    <footer>
         <div class="container">
-            &copy; 2023 - ArticleProject.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="social-icons">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Behance</a></li>
+                        <li><a href="#">Linkedin</a></li>
+                        <li><a href="#">Dribbble</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="copyright-text">
+                        <p>
+                            Copyright 2020 Stand Blog Co.
+
+                            | Design: <a rel="nofollow" href="https://templatemo.com" target="_parent">TemplateMo</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="~/stand-blog/vendor/jquery/jquery.min.js"></script>
+    <script src="~/stand-blog/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/stand-blog/assets/js/custom.js"></script>
+    <script src="~/stand-blog/assets/js/owl.js"></script>
+    <script src="~/stand-blog/assets/js/slick.js"></script>
+    <script src="~/stand-blog/assets/js/isotope.js"></script>
+    <script src="~/stand-blog/assets/js/accordions.js"></script>
+
+    <script language="text/Javascript">
+
+        cleared[0] = cleared[1] = cleared[2] = 0; 
+        function clearField(t) {                   
+            if (!cleared[t.id]) {                      
+                cleared[t.id] = 1;              
+                t.value = '';         
+                t.style.color = '#fff';
+            }
+        }
+    </script>
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>

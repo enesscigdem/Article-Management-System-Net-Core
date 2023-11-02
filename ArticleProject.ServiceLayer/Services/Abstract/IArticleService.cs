@@ -14,10 +14,14 @@ namespace ArticleProject.ServiceLayer.Services.Abstract
         Task<List<ArticleListDto>> GetAllArticlesForApprove();
         Task<List<UserArticlesDto>> GetUserArticles(UserArticlesDto userArticlesDto);
         Task<Article> GetArticleByGuid(Guid ArticleId);
+        Task<Article> GetArticleDetailsByGuid(Guid ArticleId);
         Task ActiveArticle(Guid ArticleId);
         Task PassiveArticle(Guid ArticleId);
         Task DeleteArticle(Guid ArticleId);
         Task AddArticleAsync(ArticleAddDto article);
         Task UpdateArticleAsync(ArticleUpdateDto articleUpdateDto);
+        Task<List<ArticleListAllDto>> Get10ActiveArticles();
+        Task<Comment> AddComment(Guid articleId, string content);
+        Task LikeArticle(Guid articleId);
     }
 }

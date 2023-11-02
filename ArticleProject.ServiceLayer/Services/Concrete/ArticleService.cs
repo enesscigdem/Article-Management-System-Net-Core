@@ -16,6 +16,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ArticleProject.ServiceLayer.Services.Concrete
@@ -66,7 +67,12 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
 
             return map;
         }
-
+        public async Task<List<ArticleListAllDto>> Get10ActiveArticles()
+        {
+            var articles = await unitOfWork.GetRepository<Article>().GetAllAsync(x => x.IsActive == true, y => y.Categories, z => z.Author, c => c.Comments);
+            var map = mapper.Map<List<ArticleListAllDto>>(articles);
+            return map.OrderByDescending(a=>a.CreationDate).Take(10).ToList();
+        }
         public async Task<List<UserArticlesDto>> GetUserArticles(UserArticlesDto userArticlesDto)
         {
             var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -112,7 +118,7 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
                     await article.Image.CopyToAsync(stream);
                 }
 
-               newArticle.Image = uniqueFileName;
+                newArticle.Image = uniqueFileName;
             }
 
             await unitOfWork.GetRepository<Article>().AddAsync(newArticle);
@@ -122,6 +128,16 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
         public async Task<Article> GetArticleByGuid(Guid ArticleId)
         {
             var article = await unitOfWork.GetRepository<Article>().GetByGuidAsync(ArticleId);
+            return article;
+        }
+        public async Task<Article> GetArticleDetailsByGuid(Guid ArticleId)
+        {
+            var article = await unitOfWork.GetRepository<Article>()
+         .GetAsync(x => x.ArticleId == ArticleId, y => y.Author, z => z.Categories);
+
+            article.Comments = await unitOfWork.GetRepository<Comment>()
+                .GetAllAsync(c => c.ArticleId == ArticleId, c => c.User);
+
             return article;
         }
         public async Task UpdateArticleAsync(ArticleUpdateDto articleUpdateDto)
@@ -180,6 +196,49 @@ namespace ArticleProject.ServiceLayer.Services.Concrete
             await unitOfWork.GetRepository<Article>().UpdateAsync(article);
             await unitOfWork.SaveAsync();
         }
+        public async Task<Comment> AddComment(Guid articleId, string content)
+        {
+            var article = await unitOfWork.GetRepository<Article>().GetByGuidAsync(articleId);
+            var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
+            var comment = new Comment
+            {
+                Content = content,
+                UserId = userId,
+                CreationDate = DateTime.Now,
+                ArticleId = article.ArticleId,
+            };
+            await unitOfWork.GetRepository<Comment>().AddAsync(comment);
+            await unitOfWork.SaveAsync();
+            return comment;
+        }
+        public async Task LikeArticle(Guid articleId)
+        {
+            var userId = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var article = await unitOfWork.GetRepository<Article>().GetByGuidAsync(articleId);
+
+            var existingLike = await unitOfWork.GetRepository<Like>()
+                .GetAsync(x => x.UserId == userId && x.ArticleId == articleId);
+
+            if (existingLike == null)
+            {
+                var like = new Like
+                {
+                    UserId = userId,
+                    ArticleId = articleId
+                };
+                await unitOfWork.GetRepository<Like>().AddAsync(like);
+
+                article.Likes++;
+            }
+            else
+            {
+                await unitOfWork.GetRepository<Like>().DeleteAsync(existingLike);
+
+                article.Likes--;
+            }
+            await unitOfWork.GetRepository<Article>().UpdateAsync(article);
+            await unitOfWork.SaveAsync();
+        }
     }
 }
