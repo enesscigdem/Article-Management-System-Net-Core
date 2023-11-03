@@ -1,0 +1,131 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kullanıcı Paneli</title>
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="shortcut icon" type="image/png" href="~/PanelTheme/src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="~/PanelTheme/src/assets/css/styles.min.css" />
+
+</head>
+
+<body>
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed">
+        <aside class="left-sidebar">
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="./index.html" class="text-nowrap logo-img">
+                        <img src="~/PanelTheme/src/assets/images/logos/dark-logo.svg" width="180" alt="" />
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
+                </div>
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">MAKALE</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-area="User" asp-controller="Article" asp-action="ArticleList" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout"></i>
+                                </span>
+                                <span class="hide-menu">Makalelerim</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-area="User" asp-controller="Article" asp-action="ArticleAdd" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout"></i>
+                                </span>
+                                <span class="hide-menu">Makale Ekle</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">KATEGORİ</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-area="User" asp-controller="Category" asp-action="CategoryList" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-pencil"></i>
+                                </span>
+                                <span class="hide-menu">Kategori İşlemleri</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-area="User" asp-controller="Category" asp-action="CategoryAdd" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-plus"></i>
+                                </span>
+                                <span class="hide-menu">Kategori Ekle</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-area="User" asp-controller="Category" asp-action="FollowCategoryList" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout"></i>
+                                </span>
+                                <span class="hide-menu">Takip Ettiklerim</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">DİĞER</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="sidebar-link" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-login"></i>
+                                </span>
+                                <span class="hide-menu">Siteye Git</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a asp-area="" asp-controller="Account" asp-action="Logout" class="sidebar-link" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-logout"></i>
+                                </span>
+                                <span class="hide-menu">Çıkış Yap</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="body-wrapper">
+            @await Component.InvokeAsync("LayoutHeaderImage")
+
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="mb-0">@RenderBody()</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="~/PanelTheme/src/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/PanelTheme/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/PanelTheme/src/assets/js/sidebarmenu.js"></script>
+    <script src="~/PanelTheme/src/assets/js/app.min.js"></script>
+    <script src="~/PanelTheme/src/assets/libs/simplebar/dist/simplebar.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.3/js/dataTables.buttons.min.js"></script>
+
+
+    @await RenderSectionAsync("Scripts",false)
+    @await Component.InvokeAsync("NToastNotify")
+</body>
+</html>

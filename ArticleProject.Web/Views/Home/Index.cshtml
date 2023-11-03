@@ -1,0 +1,135 @@
+﻿@model List<ArticleListAllDto>
+<section class="blog-posts">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8">
+                <div class="all-blog-posts">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @foreach (var article in Model)
+                            {
+                                <div class="blog-post">
+                                    <div class="blog-thumb">
+                                        <img src="~/images/articleimage/@article.Image" alt="">
+                                    </div>
+                                    <div class="down-content">
+
+                                        <a asp-area="" asp-controller="Home" asp-action="ArticleDetail" asp-route-ArticleId="@article.ArticleId">
+                                            <h4 style="max-width: 100%;overflow: hidden;text-overflow: ellipsis;">@article.Title</h4>
+
+                                        </a>
+                                        <ul class="post-info">
+                                            <li><a href="#">@article.Author.FirstName @article.Author.LastName</a></li>
+                                            <li><a href="#">@article.CreationDate</a></li>
+                                            <li><i class="fa fa-thumbs-up"> @article.Likes</i></li>
+                                            <li><i class="fa fa-eye"> @article.Views</i></li>
+                                            <li><i class="fa fa-comment"> @article.Comments.Count()</i></li>
+                                        </ul>
+                                        <div style="overflow-wrap:break-word; word-wrap:break-word; max-width:100%">
+                                            <p>@(article.Content.Length > 280 ? article.Content.Substring(0, 280) : article.Content)...</p>
+
+                                        </div>
+                                        <div class="post-options">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <ul class="post-tags">
+                                                        <li><i class="fa fa-tags"></i></li>
+                                                        @foreach (var category in article.Categories)
+                                                        {
+                                                            <li><a href="#">@category.CategoryName,</a></li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sidebar-item search">
+                                <form id="search_form" name="gs" method="GET" action="#">
+                                    <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item recent-posts">
+                                <div class="sidebar-heading">
+                                    <h2>Recent Posts</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li>
+                                            <a href="post-details.html">
+                                                <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
+                                                <span>May 31, 2020</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="post-details.html">
+                                                <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
+                                                <span>May 28, 2020</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="post-details.html">
+                                                <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
+                                                <span>May 14, 2020</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item categories">
+                                <div class="sidebar-heading">
+                                    <h2>Categories</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><a href="#">- Nature Lifestyle</a></li>
+                                        <li><a href="#">- Awesome Layouts</a></li>
+                                        <li><a href="#">- Creative Ideas</a></li>
+                                        <li><a href="#">- Responsive Templates</a></li>
+                                        <li><a href="#">- HTML5 / CSS3 Templates</a></li>
+                                        <li><a href="#">- Creative &amp; Unique</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="sidebar-item tags">
+                                <div class="sidebar-heading">
+                                    <h2>Tag Clouds</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        <li><a href="#">Lifestyle</a></li>
+                                        <li><a href="#">Creative</a></li>
+                                        <li><a href="#">HTML5</a></li>
+                                        <li><a href="#">Inspiration</a></li>
+                                        <li><a href="#">Motivation</a></li>
+                                        <li><a href="#">PSD</a></li>
+                                        <li><a href="#">Responsive</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

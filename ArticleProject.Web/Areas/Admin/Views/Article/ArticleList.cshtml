@@ -1,0 +1,47 @@
+﻿@model List<ArticleListDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Makale /</span> Makale İşlemleri</h4>
+
+    <div class="card">
+        <div class="table-responsive text-nowrap m-3">
+            <table class="table table-bordered" id="userTable" width="100%" collspacing="0">
+                <thead>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>İçerik</th>
+                        <th>Aktif Durumu</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>İçerik</th>
+                        <th>Aktif Durumu</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var article in Model)
+                    {
+                        <tr name="@article.ArticleId">
+                            <td>@(article.Title.Length > 30 ? article.Title.Substring(0, 30) + "..." : article.Title)</td>
+                            <td>@(article.Content.Length > 30 ? article.Content.Substring(0, 30) + "..." : article.Content)</td>
+                            <td>@(article.IsActive ? "Aktif" : "Aktif Değil")</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" data-id="@article.ArticleId" asp-area="Admin" asp-controller="Article" asp-action="ConfirmArticle" asp-route-ArticleId="@article.ArticleId"><i class="ti ti-check"></i></a>
+                                <a class="btn btn-dark btn-sm" data-id="@article.ArticleId" asp-area="Admin" asp-controller="Article" asp-action="PassiveArticle" asp-route-ArticleId="@article.ArticleId"><i class="ti ti-ban"></i></a>
+                                <a class="btn btn-danger btn-sm" data-id="@article.ArticleId" asp-area="Admin" asp-controller="Article" asp-action="DeleteArticle" asp-route-ArticleId="@article.ArticleId"><i class="ti ti-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/userList.js" type="application/ecmascript"></script>
+}

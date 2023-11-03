@@ -1,0 +1,90 @@
+﻿@model RegisterDto
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kayıt Paneli</title>
+    <link rel="shortcut icon" type="image/png" href="~/PanelTheme/src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="~/PanelTheme/src/assets/css/styles.min.css" />
+</head>
+
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed">
+        <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+            <div class="d-flex align-items-center justify-content-center w-100">
+                <div class="row justify-content-center w-100">
+                    <div class="col-md-8 col-lg-6 col-xxl-4">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                    <img src="~/PanelTheme/src/assets/images/logos/dark-logo.svg" width="180" alt="">
+                                </a>
+                                <p class="text-center">Kayıt Paneli</p>
+                                <form asp-area="" asp-controller="Account" asp-action="Register" enctype="multipart/form-data">
+                                    <div class="text-danger" asp-validation-summary="All"></div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputName" class="form-label">Ad</label>
+                                                <input asp-for="FirstName" type="text" class="form-control" id="exampleInputName" aria-describedby="textHelp">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputSurname" class="form-label">Soyad</label>
+                                                <input asp-for="LastName" type="text" class="form-control" id="exampleInputSurname" aria-describedby="textHelp">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail" class="form-label">E-mail Adresi</label>
+                                                <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputUsername" class="form-label">Kullanıcı Adı</label>
+                                                <input asp-for="UserName" type="text" class="form-control" id="exampleInputUsername" aria-describedby="textHelp">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword" class="form-label">Şifre</label>
+                                                <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword" aria-describedby="textHelp">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="exampleInputPhoto" class="form-label">Fotoğraf</label>
+                                                <input asp-for="ProfilePicture" type="file" class="form-control" id="exampleInputPhoto" aria-describedby="textHelp">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Kayıt Ol</button>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <p class="fs-4 mb-0 fw-bold">Zaten bir hesabınız var mı?</p>
+                                        <a class="text-primary fw-bold ms-2" asp-area="" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/PanelTheme/src/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/PanelTheme/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
